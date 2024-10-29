@@ -65,26 +65,27 @@ namespace OnlineStore
 
             try
             {
+
                 bool isAuthenticated = await AuthenticateUserAsync(userLogin);
-                MessageBox.Show(isAuthenticated ? "Авторизация прошла успешно!" : "Неверный логин или пароль.");
+                MessageBox.Show(isAuthenticated ? "ГЂГўГІГ®Г°ГЁГ§Г Г¶ГЁГї ГЇГ°Г®ГёГ«Г  ГіГ±ГЇГҐГёГ­Г®!" : "ГЌГҐГўГҐГ°Г­Г»Г© Г«Г®ГЈГЁГ­ ГЁГ«ГЁ ГЇГ Г°Г®Г«Гј.");
                 if (isAuthenticated)
                 {
-                    //TODO переход на USERINTERFACE
+                    //TODO ГЇГҐГ°ГҐГµГ®Г¤ Г­Г  USERINTERFACE
                 }
             }
             catch (HttpRequestException httpEx)
             {
-                MessageBox.Show($"Ошибка HTTP: {httpEx.Message}");
+                MessageBox.Show($"ГЋГёГЁГЎГЄГ  HTTP: {httpEx.Message}");
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Произошла ошибка: {ex.Message}");
+                MessageBox.Show($"ГЏГ°Г®ГЁГ§Г®ГёГ«Г  Г®ГёГЁГЎГЄГ : {ex.Message}");
             }
         }
         public static async Task<bool> AuthenticateUserAsync(UserLogin login)
         {
-            //var url = "http://localhost:5000/users/authenticate"; // Укажите адрес вашего сервера
-            var url = "http://localhost:7284/users/authenticate"; // Укажите адрес вашего сервера
+
+            var url = "https://localhost:7284/users/authenticate"; // Г†ГҐГ­Гї
 
             var jsonContent = JsonSerializer.Serialize(login);
             var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");

@@ -65,12 +65,13 @@ namespace OnlineStore
             MessageBox.Show(isAuthenticated ? "Авторизация прошла успешно!" : "Неверный логин или пароль.");
             if (isAuthenticated)
             {
-               //TODO переход на USERINTERFACE
+                //TODO переход на USERINTERFACE
+                MessageBox.Show("ENTER");
             }
         }
         public static async Task<bool> AuthenticateUserAsync(UserLogin login)
         {
-            var url = "http://localhost:5000/users/authenticate"; // Укажите адрес вашего сервера
+            var url = "https://localhost:7284/users/authenticate"; // Женя
             var jsonContent = JsonSerializer.Serialize(login);
             var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
 

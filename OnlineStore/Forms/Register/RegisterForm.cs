@@ -63,7 +63,7 @@ namespace OnlineStore.Forms.Register
 
         public static async Task<bool> RegisterUserAsync(User user)
         {
-            var url = "http://localhost:5000/users/register"; // поменять на свой адрес
+            var url = "https://localhost:7284/users/register"; // Женя
             var jsonContent = JsonSerializer.Serialize(user);
             var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
 

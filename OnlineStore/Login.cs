@@ -48,7 +48,7 @@ namespace OnlineStore
 
         private void RegisterBtn_Click(object sender, EventArgs e)
         {
-            RegisterForm registerForm = new RegisterForm();
+            RegisterForm registerForm = new RegisterForm(this);
             registerForm.Show();
             this.Hide();
         }
@@ -70,7 +70,9 @@ namespace OnlineStore
         }
         public static async Task<bool> AuthenticateUserAsync(UserLogin login)
         {
-            var url = "http://localhost:5000/users/authenticate"; // Укажите адрес вашего сервера
+            //var url = "http://localhost:5000/users/authenticate"; // Укажите адрес вашего сервера
+            var url = "http://localhost:7284/users/authenticate"; // Укажите адрес вашего сервера
+
             var jsonContent = JsonSerializer.Serialize(login);
             var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
 

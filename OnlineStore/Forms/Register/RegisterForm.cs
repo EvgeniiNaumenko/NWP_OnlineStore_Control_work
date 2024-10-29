@@ -17,9 +17,11 @@ namespace OnlineStore.Forms.Register
     public partial class RegisterForm : Form
     {
         private static readonly HttpClient client = new HttpClient();
-        public RegisterForm()
+        private Login _loginForm;
+        public RegisterForm(Login loginForm)
         {
             InitializeComponent();
+            _loginForm = loginForm;
         }
 
         private async void RegisterBtn_Click(object sender, EventArgs e)
@@ -43,7 +45,8 @@ namespace OnlineStore.Forms.Register
 
         private void BackBtn_Click(object sender, EventArgs e)
         {
-            //TODO
+            _loginForm.Show();
+            this.Close();
         }
         private bool AreTextBoxesNotEmpty()
         {
@@ -63,7 +66,9 @@ namespace OnlineStore.Forms.Register
 
         public static async Task<bool> RegisterUserAsync(User user)
         {
-            var url = "http://localhost:5000/users/register"; // поменять на свой адрес
+            //var url = "http://localhost:5000/users/register"; // поменять на свой адрес
+            var url = "http://localhost:7284/users/register"; // поменять на свой адрес
+
             var jsonContent = JsonSerializer.Serialize(user);
             var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
 
@@ -77,5 +82,6 @@ namespace OnlineStore.Forms.Register
 
             return false;
         }
+
     }
 }

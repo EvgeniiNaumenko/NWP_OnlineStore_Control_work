@@ -2,13 +2,16 @@ using System.Xml.Linq;
 using System;
 using OnlineStoreServer.Models;
 using Microsoft.AspNetCore.Identity.Data;
+using Microsoft.EntityFrameworkCore;
 
 var context = new ApplicationDbContext();
 
 var dbService = new DbService(context);
 
 var builder = WebApplication.CreateBuilder();
+
 var app = builder.Build();
+
 
 //1) принимаем запрос на вход!
 app.MapPost("/users/authenticate", async (UserLogin userLogin, DbService dbService) =>

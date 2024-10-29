@@ -1,6 +1,6 @@
-﻿namespace OnlineStore.Forms.UserInterface
+﻿namespace OnlineStore.Forms.MenuSubForms
 {
-    partial class UserInterfaceForm
+    partial class DashboardForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,45 +29,30 @@
         private void InitializeComponent()
         {
             button1 = new Button();
-            flowLayoutPanel1 = new FlowLayoutPanel();
             SuspendLayout();
             // 
             // button1
             // 
-            button1.Location = new Point(90, 188);
-            button1.Margin = new Padding(3, 2, 3, 2);
+            button1.Location = new Point(353, 180);
             button1.Name = "button1";
-            button1.Size = new Size(118, 38);
-            button1.TabIndex = 1;
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 0;
             button1.Text = "button1";
             button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
             // 
-            // flowLayoutPanel1
-            // 
-            flowLayoutPanel1.AutoScroll = true;
-            flowLayoutPanel1.Dock = DockStyle.Right;
-            flowLayoutPanel1.Location = new Point(237, 0);
-            flowLayoutPanel1.Margin = new Padding(3, 2, 3, 2);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(798, 480);
-            flowLayoutPanel1.TabIndex = 2;
-            // 
-            // UserInterfaceForm
+            // DashboardForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1035, 480);
-            Controls.Add(flowLayoutPanel1);
+            ClientSize = new Size(800, 450);
             Controls.Add(button1);
-            Margin = new Padding(3, 2, 3, 2);
-            Name = "UserInterfaceForm";
-            Text = "UserInterfaceForm";
+            Name = "DashboardForm";
+            Text = "DashboardForm";
             ResumeLayout(false);
         }
 
         #endregion
+
         private Button button1;
-        private FlowLayoutPanel flowLayoutPanel1;
     }
 }

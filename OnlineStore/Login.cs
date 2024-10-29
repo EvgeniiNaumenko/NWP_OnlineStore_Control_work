@@ -4,6 +4,8 @@ using OnlineStore.Forms.Register;
 using System.Text.Json;
 using System.Text;
 using OnlineStore.Models;
+using OnlineStore.Forms.UserInterface;
+using OnlineStore.Forms;
 
 namespace OnlineStore
 {
@@ -61,11 +63,22 @@ namespace OnlineStore
                 Password = PasswordTextBox.Text
             };
 
-            bool isAuthenticated = await AuthenticateUserAsync(userLogin);
-            MessageBox.Show(isAuthenticated ? "Авторизация прошла успешно!" : "Неверный логин или пароль.");
-            if (isAuthenticated)
+            try
             {
-               //TODO переход на USERINTERFACE
+                bool isAuthenticated = await AuthenticateUserAsync(userLogin);
+                MessageBox.Show(isAuthenticated ? "Авторизация прошла успешно!" : "Неверный логин или пароль.");
+                if (isAuthenticated)
+                {
+                    //TODO переход на USERINTERFACE
+                }
+            }
+            catch (HttpRequestException httpEx)
+            {
+                MessageBox.Show($"Ошибка HTTP: {httpEx.Message}");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Произошла ошибка: {ex.Message}");
             }
         }
         public static async Task<bool> AuthenticateUserAsync(UserLogin login)
@@ -85,6 +98,17 @@ namespace OnlineStore
             }
 
             return false;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            //UserInterfaceForm userInterForm = new UserInterfaceForm();
+            //userInterForm.Show();
+
+
+            MainMenuForm menuForm = new MainMenuForm();
+            menuForm.Show();
+            this.Hide();
         }
     }
 }

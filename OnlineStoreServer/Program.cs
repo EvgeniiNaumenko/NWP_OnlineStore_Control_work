@@ -4,21 +4,14 @@ using OnlineStoreServer.Models;
 using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.EntityFrameworkCore;
 
-//var context = new ApplicationDbContext();
+var context = new ApplicationDbContext();
 
-//var dbService = new DbService(context);
+var dbService = new DbService(context);
 
 var builder = WebApplication.CreateBuilder();
 
-// Регистрация ApplicationDbContext
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-
-// Регистрация DbService
-builder.Services.AddScoped<DbService>();
-
-
 var app = builder.Build();
+
 
 //1) принимаем запрос на вход!
 app.MapPost("/users/authenticate", async (UserLogin userLogin, DbService dbService) =>

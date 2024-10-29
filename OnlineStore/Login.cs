@@ -4,6 +4,8 @@ using OnlineStore.Forms.Register;
 using System.Text.Json;
 using System.Text;
 using OnlineStore.Models;
+using OnlineStore.Forms.UserInterface;
+using OnlineStore.Forms;
 
 namespace OnlineStore
 {
@@ -48,7 +50,7 @@ namespace OnlineStore
 
         private void RegisterBtn_Click(object sender, EventArgs e)
         {
-            RegisterForm registerForm = new RegisterForm();
+            RegisterForm registerForm = new RegisterForm(this);
             registerForm.Show();
             this.Hide();
         }
@@ -61,17 +63,30 @@ namespace OnlineStore
                 Password = PasswordTextBox.Text
             };
 
-            bool isAuthenticated = await AuthenticateUserAsync(userLogin);
-            MessageBox.Show(isAuthenticated ? "Авторизация прошла успешно!" : "Неверный логин или пароль.");
-            if (isAuthenticated)
+            try
             {
-                //TODO переход на USERINTERFACE
-                MessageBox.Show("ENTER");
+
+                bool isAuthenticated = await AuthenticateUserAsync(userLogin);
+                MessageBox.Show(isAuthenticated ? "ГЂГўГІГ®Г°ГЁГ§Г Г¶ГЁГї ГЇГ°Г®ГёГ«Г  ГіГ±ГЇГҐГёГ­Г®!" : "ГЌГҐГўГҐГ°Г­Г»Г© Г«Г®ГЈГЁГ­ ГЁГ«ГЁ ГЇГ Г°Г®Г«Гј.");
+                if (isAuthenticated)
+                {
+                    //TODO ГЇГҐГ°ГҐГµГ®Г¤ Г­Г  USERINTERFACE
+                }
+            }
+            catch (HttpRequestException httpEx)
+            {
+                MessageBox.Show($"ГЋГёГЁГЎГЄГ  HTTP: {httpEx.Message}");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"ГЏГ°Г®ГЁГ§Г®ГёГ«Г  Г®ГёГЁГЎГЄГ : {ex.Message}");
             }
         }
         public static async Task<bool> AuthenticateUserAsync(UserLogin login)
         {
-            var url = "https://localhost:7284/users/authenticate"; // Женя
+
+            var url = "https://localhost:7284/users/authenticate"; // Г†ГҐГ­Гї
+
             var jsonContent = JsonSerializer.Serialize(login);
             var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
 
@@ -84,6 +99,17 @@ namespace OnlineStore
             }
 
             return false;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            //UserInterfaceForm userInterForm = new UserInterfaceForm();
+            //userInterForm.Show();
+
+
+            MainMenuForm menuForm = new MainMenuForm();
+            menuForm.Show();
+            this.Hide();
         }
     }
 }

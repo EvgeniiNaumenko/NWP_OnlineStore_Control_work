@@ -10,9 +10,12 @@ namespace OnlineStoreServer.Models
         public DbSet<ProductDescription> ProductDescriptions { get; set; }
         public DbSet<ProductImage> ProductImages { get; set; }
 
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
-        {
-        }
+
+
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+            : base(options){}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

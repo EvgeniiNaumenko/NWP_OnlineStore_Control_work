@@ -41,7 +41,8 @@ namespace OnlineStore.Forms.UserInterface
                 // Создаём PictureBox для изображения
                 PictureBox pictureBox = new PictureBox
                 {
-                    Image = Image.FromFile("D:\\ЖЕНЯ\\Обучение\\курс\\img\\photo_2023-07-20_12-01-53.jpg"), // Укажите путь к изображению
+                    //Image = Image.FromFile("D:\\ЖЕНЯ\\Обучение\\курс\\img\\photo_2023-07-20_12-01-53.jpg"), // Укажите путь к изображению
+                    Image = Image.FromFile("C:\\Users\\admin\\Desktop\\Coollama.jpeg"), // Укажите путь к изображению
                     SizeMode = PictureBoxSizeMode.Zoom,
                     Dock = DockStyle.Top,
                     Height = 150

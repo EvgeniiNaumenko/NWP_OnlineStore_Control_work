@@ -145,7 +145,10 @@ namespace OnlineStore.Forms
 
         private void LogoHomeBtn_Click(object sender, EventArgs e)
         {
-            currentChildForm.Close();
+            if (currentChildForm != null)
+            {
+                currentChildForm.Close();
+            }
             Reset();
         }
 

@@ -66,37 +66,56 @@ namespace OnlineStore
 
             try
             {
+                int? userId = await AuthenticateUserAsync(userLogin);
 
-                bool isAuthenticated = await AuthenticateUserAsync(userLogin);
-                MessageBox.Show(isAuthenticated ? "555Àâòîðèçàöèÿ ïðîøëà óñïåøíî!" : "Логин или пароль неверен.");
-                if (isAuthenticated)
+
+                if (userId.HasValue)
                 {
-                    MainMenuForm menuForm = new MainMenuForm();
+                    MainMenuForm menuForm = new MainMenuForm
+                    {
+                        //UserId = userId.Value // �������� UserId � �����, ���� ��� ����������
+                    };
                     menuForm.Show();
                     this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Authentication failed. Please check your credentials.");
                 }
             }
             catch (HttpRequestException httpEx)
             {
-                MessageBox.Show($"123Îøèáêà HTTP: {httpEx.Message}");
+                MessageBox.Show($"HTTP Error: {httpEx.Message}");
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"123Ïðîèçîøëà îøèáêà: {ex.Message}");
+                MessageBox.Show($"Error: {ex.Message}");
             }
         }
 
-        public static async Task<bool> AuthenticateUserAsync(UserLogin login)
+        public static async Task<int?> AuthenticateUserAsync(UserLogin login)
         {
             var url = "https://localhost:7284/users/authenticate";
 
             var response = await client.PostAsJsonAsync(url, login);
+
             if (response.IsSuccessStatusCode)
             {
-                var result = await response.Content.ReadFromJsonAsync<Dictionary<string, bool>>();
-                return result != null && result.TryGetValue("authenticated", out bool isAuthenticated) && isAuthenticated;
+                if (response.Content != null)
+                {
+                    try
+                    {
+                        int? userId = await response.Content.ReadFromJsonAsync<int?>();
+                        return userId;
+                    }
+                    catch (JsonException)
+                    {
+                        return null;
+                    }
+                }
             }
-            return false;
+            return null;
+
         }
 
         private void button2_Click(object sender, EventArgs e)

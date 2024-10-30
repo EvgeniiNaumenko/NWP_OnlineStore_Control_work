@@ -12,6 +12,17 @@ namespace OnlineStoreServer.Models
             _context = context;
         }
         //1)проверка существует ли ЮЗЕР
+
+        public async Task<int?> AuthenticateUserAsync(string login, string password)
+        {
+            var user = await _context.Users
+                .FirstOrDefaultAsync(u => u.Login == login && u.Password == password);
+
+            return user?.Id; 
+        }
+
+        //2) регистрация нового пользователя
+=======
         //public async Task<bool> AuthenticateUserAsync(string login, string password)
         //{
         //    //return await _context.Users.AnyAsync(u => u.Login == login && u.Password == password);
@@ -33,21 +44,8 @@ namespace OnlineStoreServer.Models
         //    return true; 
         //}
 
-        //1)проверка существует ли ЮЗЕР
-        public async Task<bool> AuthenticateUserAsync(string login, string password)
-        {
-            var user = await _context.Users.FirstOrDefaultAsync(u => u.Login == login);
-            if (user == null)
-            {
-                return false;
-            }
-
-            var hasher = new PasswordHasher<string>();
-            var result = hasher.VerifyHashedPassword(null, user.Password, password);
-            return result == PasswordVerificationResult.Success;
-        }
-
         //2) регистрациz нового пользователя и хеширование пароля
+
         public async Task<bool> RegisterUserAsync(User user)
         {
             bool userExists = await _context.Users.AnyAsync(u => u.Login == user.Login);
@@ -67,6 +65,56 @@ namespace OnlineStoreServer.Models
             var hasher = new PasswordHasher<string>();
             return hasher.HashPassword(null, password);
         }
+
+
+        //3) добавление продукта
+        public async Task<bool> AddProductAsync(ProductRequest productRequest)
+        {
+
+            var user = await _context.Users.FindAsync(productRequest.UserId);
+            if (user == null) return false;
+
+
+            var product = new Product
+            {
+                Name = productRequest.Name,
+                Category = productRequest.Category,
+                Price = productRequest.Price,
+                Description = productRequest.Description,
+                UserId = productRequest.UserId,
+                User = user
+            };
+
+
+            string userDirectory = Path.Combine("wwwroot", "images", "users", user.Id.ToString());
+
+            if (!Directory.Exists(userDirectory))
+            {
+                Directory.CreateDirectory(userDirectory);
+            }
+
+            foreach (var imageBytes in productRequest.Images)
+            {
+
+                string fileName = $"{Guid.NewGuid()}.jpg";
+                string filePath = Path.Combine(userDirectory, fileName);
+
+                await File.WriteAllBytesAsync(filePath, imageBytes);
+
+                var productImage = new ProductImage
+                {
+                    ImagePath = filePath, 
+                    Product = product
+                };
+                product.Images.Add(productImage);
+            }
+
+            _context.Products.Add(product);
+            await _context.SaveChangesAsync();
+            return true;
+        }
+
+
 
 
 

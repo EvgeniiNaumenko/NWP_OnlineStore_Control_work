@@ -9,33 +9,42 @@ class Program
         var builder = WebApplication.CreateBuilder(args);
 
         builder.Services.AddDbContext<ApplicationDbContext>(options =>
-        //options.UseSqlServer(@"Server=DESKTOP-C317JNM;Database=OnlineStoreDB;Trusted_Connection=True;TrustServerCertificate=True;")); // Æåíÿ
-        //options.UseSqlServer(@"Server=DESKTOP-C317JNM;Database=OnlineStoreDB;Trusted_Connection=True;TrustServerCertificate=True;")); // Äåíèñ
-        options.UseSqlServer(@"Server=DESKTOP-V6G1V7P;Database=OnlineStoreDB;Trusted_Connection=True;TrustServerCertificate=True;"));
+
+        options.UseSqlServer(@"Server=DESKTOP-C317JNM;Database=OnlineStoreDB;Trusted_Connection=True;TrustServerCertificate=True;")); // Evgenii
+        //options.UseSqlServer(@"Server=DESKTOP-V6G1V7P;Database=OnlineStoreDB;Trusted_Connection=True;TrustServerCertificate=True;")); // Den
+
         builder.Services.AddScoped<DbService>();
 
         var app = builder.Build();
 
         app.MapGet("/", () => "Hello World!");
 
-        // 1) ïðèíèìàåì çàïðîñ íà âõîä!
+        // 1) enter
         app.MapPost("/users/authenticate", async (UserLogin userLogin, DbService dbService) =>
         {
-            bool isAuthenticated = await dbService.AuthenticateUserAsync(userLogin.Login, userLogin.Password);
-            return Results.Json(new { authenticated = isAuthenticated });
+            int? userId = await dbService.AuthenticateUserAsync(userLogin.Login, userLogin.Password);
+
+            return Results.Json(userId); 
         });
 
-        // 2) ïðèíèìàåì ôîðìó è ïðîâåðÿåì, åñëè óñïåøíî - ðåãèñòðèðóåì
+        // 2) register
         app.MapPost("/users/register", async (User user, DbService dbService) =>
         {
             bool registrationSuccess = await dbService.RegisterUserAsync(user);
             if (registrationSuccess)
             {
-                return Results.Json(new { registered = true, message = "Registration was successful!" });
+                return Results.Json(new { registered = true });
             }
-            return Results.Json(new { registered = false, message = "User with this login already exists" });
+            return Results.Json(new { registered = false});
         });
 
+        //3) add product
+
+        app.MapPost("/products/add", async (ProductRequest productRequest, DbService dbService) =>
+        {
+            bool success = await dbService.AddProductAsync(productRequest);
+            return Results.Json(new { added = success });
+        });
         app.Run();
     }
 }

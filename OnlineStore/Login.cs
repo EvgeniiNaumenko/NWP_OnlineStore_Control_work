@@ -6,6 +6,7 @@ using System.Text;
 using OnlineStore.Models;
 using OnlineStore.Forms.UserInterface;
 using OnlineStore.Forms;
+using System.Net.Http.Json;
 
 namespace OnlineStore
 {
@@ -65,40 +66,54 @@ namespace OnlineStore
 
             try
             {
+                int? userId = await AuthenticateUserAsync(userLogin);
 
-                bool isAuthenticated = await AuthenticateUserAsync(userLogin);
-                MessageBox.Show(isAuthenticated ? "Àâòîðèçàöèÿ ïðîøëà óñïåøíî!" : "Íåâåðíûé ëîãèí èëè ïàðîëü.");
-                if (isAuthenticated)
+                if (userId.HasValue)
                 {
-                    //TODO ïåðåõîä íà USERINTERFACE
+                    MainMenuForm menuForm = new MainMenuForm
+                    {
+                        //UserId = userId.Value // �������� UserId � �����, ���� ��� ����������
+                    };
+                    menuForm.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Authentication failed. Please check your credentials.");
                 }
             }
             catch (HttpRequestException httpEx)
             {
-                MessageBox.Show($"Îøèáêà HTTP: {httpEx.Message}");
+                MessageBox.Show($"HTTP Error: {httpEx.Message}");
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Ïðîèçîøëà îøèáêà: {ex.Message}");
+                MessageBox.Show($"Error: {ex.Message}");
             }
         }
-        public static async Task<bool> AuthenticateUserAsync(UserLogin login)
+
+        public static async Task<int?> AuthenticateUserAsync(UserLogin login)
         {
+            var url = "https://localhost:7284/users/authenticate";
 
-            var url = "https://localhost:7284/users/authenticate"; // Æåíÿ
+            var response = await client.PostAsJsonAsync(url, login);
 
-            var jsonContent = JsonSerializer.Serialize(login);
-            var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
-
-            var response = await client.PostAsync(url, content);
             if (response.IsSuccessStatusCode)
             {
-                var responseString = await response.Content.ReadAsStringAsync();
-                var result = JsonSerializer.Deserialize<AuthenticationResponse>(responseString);
-                return result?.Authenticated ?? false;
+                if (response.Content != null)
+                {
+                    try
+                    {
+                        int? userId = await response.Content.ReadFromJsonAsync<int?>();
+                        return userId;
+                    }
+                    catch (JsonException)
+                    {
+                        return null;
+                    }
+                }
             }
-
-            return false;
+            return null;
         }
 
         private void button2_Click(object sender, EventArgs e)

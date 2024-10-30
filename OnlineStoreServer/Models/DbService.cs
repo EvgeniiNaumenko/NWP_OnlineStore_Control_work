@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace OnlineStoreServer.Models
 {
@@ -11,6 +12,7 @@ namespace OnlineStoreServer.Models
             _context = context;
         }
         //1)проверка существует ли ЮЗЕР
+
         public async Task<int?> AuthenticateUserAsync(string login, string password)
         {
             var user = await _context.Users
@@ -20,18 +22,50 @@ namespace OnlineStoreServer.Models
         }
 
         //2) регистрация нового пользователя
+=======
+        //public async Task<bool> AuthenticateUserAsync(string login, string password)
+        //{
+        //    //return await _context.Users.AnyAsync(u => u.Login == login && u.Password == password);
+        //    var userExists = await _context.Users.AnyAsync(u => u.Login == login && u.Password == password);
+        //    Console.WriteLine($"User exists: {userExists} for login: {login}");
+        //    return userExists;
+        //}
+        //2) регистрациz нового пользователя
+        //public async Task<bool> RegisterUserAsync(User user)
+        //{
+
+        //    bool userExists = await _context.Users.AnyAsync(u => u.Login == user.Login);
+        //    if (userExists)
+        //    {
+        //        return false; 
+        //    }
+        //    _context.Users.Add(user);
+        //    await _context.SaveChangesAsync();
+        //    return true; 
+        //}
+
+        //2) регистрациz нового пользователя и хеширование пароля
+
         public async Task<bool> RegisterUserAsync(User user)
         {
-
             bool userExists = await _context.Users.AnyAsync(u => u.Login == user.Login);
             if (userExists)
             {
-                return false; 
+                return false;
             }
+
+            user.Password = HashPassword(user.Password);
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
-            return true; 
+            return true;
         }
+        //Hash password
+        private string HashPassword(string password)
+        {
+            var hasher = new PasswordHasher<string>();
+            return hasher.HashPassword(null, password);
+        }
+
 
         //3) добавление продукта
         public async Task<bool> AddProductAsync(ProductRequest productRequest)

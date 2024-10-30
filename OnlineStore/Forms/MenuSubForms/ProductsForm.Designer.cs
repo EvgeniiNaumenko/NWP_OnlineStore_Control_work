@@ -28,24 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button1 = new Button();
             SuspendLayout();
-            // 
-            // button1
-            // 
-            button1.Location = new Point(715, 21);
-            button1.Name = "button1";
-            button1.Size = new Size(58, 61);
-            button1.TabIndex = 0;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
             // 
             // ProductsForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(34, 33, 74);
             ClientSize = new Size(800, 450);
-            Controls.Add(button1);
             Name = "ProductsForm";
             Text = "ProductsForm";
             ResumeLayout(false);

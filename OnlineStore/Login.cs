@@ -68,11 +68,12 @@ namespace OnlineStore
             {
                 int? userId = await AuthenticateUserAsync(userLogin);
 
+
                 if (userId.HasValue)
                 {
                     MainMenuForm menuForm = new MainMenuForm
                     {
-                        //UserId = userId.Value // Передаем UserId в форму, если это необходимо
+                        //UserId = userId.Value // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ UserId пїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
                     };
                     menuForm.Show();
                     this.Hide();
@@ -114,6 +115,7 @@ namespace OnlineStore
                 }
             }
             return null;
+
         }
 
         private void button2_Click(object sender, EventArgs e)

@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using OnlineStoreServer.Models;
 
 class Program
@@ -8,8 +9,10 @@ class Program
         var builder = WebApplication.CreateBuilder(args);
 
         builder.Services.AddDbContext<ApplicationDbContext>(options =>
+
         options.UseSqlServer(@"Server=DESKTOP-C317JNM;Database=OnlineStoreDB;Trusted_Connection=True;TrustServerCertificate=True;")); // Evgenii
-        //options.UseSqlServer(@"Server=DESKTOP-C317JNM;Database=OnlineStoreDB;Trusted_Connection=True;TrustServerCertificate=True;")); // Denis
+        //options.UseSqlServer(@"Server=DESKTOP-V6G1V7P;Database=OnlineStoreDB;Trusted_Connection=True;TrustServerCertificate=True;")); // Den
+
         builder.Services.AddScoped<DbService>();
 
         var app = builder.Build();
@@ -42,8 +45,6 @@ class Program
             bool success = await dbService.AddProductAsync(productRequest);
             return Results.Json(new { added = success });
         });
-
-
         app.Run();
     }
 }

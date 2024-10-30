@@ -258,19 +258,21 @@
             // 
             // MaximizeBtn
             // 
+            MaximizeBtn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             MaximizeBtn.FlatAppearance.BorderSize = 0;
             MaximizeBtn.FlatStyle = FlatStyle.Flat;
             MaximizeBtn.Image = (Image)resources.GetObject("MaximizeBtn.Image");
             MaximizeBtn.Location = new Point(807, 4);
             MaximizeBtn.Margin = new Padding(3, 4, 3, 4);
             MaximizeBtn.Name = "MaximizeBtn";
-            MaximizeBtn.Size = new Size(38, 39);
+            MaximizeBtn.Size = new Size(27, 27);
             MaximizeBtn.TabIndex = 3;
             MaximizeBtn.UseVisualStyleBackColor = true;
             MaximizeBtn.Click += MaximizeBtn_Click;
             // 
             // MinimizeBtn
             // 
+            MinimizeBtn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             MinimizeBtn.FlatAppearance.BorderSize = 0;
             MinimizeBtn.FlatStyle = FlatStyle.Flat;
             MinimizeBtn.Image = (Image)resources.GetObject("MinimizeBtn.Image");
@@ -278,20 +280,21 @@
             MinimizeBtn.Location = new Point(762, 4);
             MinimizeBtn.Margin = new Padding(3, 4, 3, 4);
             MinimizeBtn.Name = "MinimizeBtn";
-            MinimizeBtn.Size = new Size(38, 39);
+            MinimizeBtn.Size = new Size(27, 27);
             MinimizeBtn.TabIndex = 3;
             MinimizeBtn.UseVisualStyleBackColor = true;
             MinimizeBtn.Click += MinimizeBtn_Click;
             // 
             // CloseBtn
             // 
+            CloseBtn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             CloseBtn.FlatAppearance.BorderSize = 0;
             CloseBtn.FlatStyle = FlatStyle.Flat;
             CloseBtn.Image = (Image)resources.GetObject("CloseBtn.Image");
             CloseBtn.Location = new Point(851, 4);
             CloseBtn.Margin = new Padding(3, 4, 3, 4);
             CloseBtn.Name = "CloseBtn";
-            CloseBtn.Size = new Size(38, 39);
+            CloseBtn.Size = new Size(27, 27);
             CloseBtn.TabIndex = 3;
             CloseBtn.UseVisualStyleBackColor = true;
             CloseBtn.Click += CloseBtn_Click;

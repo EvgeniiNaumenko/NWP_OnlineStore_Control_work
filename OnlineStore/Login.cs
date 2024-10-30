@@ -6,6 +6,7 @@ using System.Text;
 using OnlineStore.Models;
 using OnlineStore.Forms.UserInterface;
 using OnlineStore.Forms;
+using System.Net.Http.Json;
 
 namespace OnlineStore
 {
@@ -65,38 +66,36 @@ namespace OnlineStore
 
             try
             {
+
                 bool isAuthenticated = await AuthenticateUserAsync(userLogin);
-                MessageBox.Show(isAuthenticated ? "Авторизация прошла успешно!" : "Неверный логин или пароль.");
+                MessageBox.Show(isAuthenticated ? "555ГЂГўГІГ®Г°ГЁГ§Г Г¶ГЁГї ГЇГ°Г®ГёГ«Г  ГіГ±ГЇГҐГёГ­Г®!" : "Р›РѕРіРёРЅ РёР»Рё РїР°СЂРѕР»СЊ РЅРµРІРµСЂРµРЅ.");
                 if (isAuthenticated)
                 {
-                    //TODO переход на USERINTERFACE
+                    MainMenuForm menuForm = new MainMenuForm();
+                    menuForm.Show();
+                    this.Hide();
                 }
             }
             catch (HttpRequestException httpEx)
             {
-                MessageBox.Show($"Ошибка HTTP: {httpEx.Message}");
+                MessageBox.Show($"123ГЋГёГЁГЎГЄГ  HTTP: {httpEx.Message}");
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Произошла ошибка: {ex.Message}");
+                MessageBox.Show($"123ГЏГ°Г®ГЁГ§Г®ГёГ«Г  Г®ГёГЁГЎГЄГ : {ex.Message}");
             }
         }
+
         public static async Task<bool> AuthenticateUserAsync(UserLogin login)
         {
-            //var url = "http://localhost:5000/users/authenticate"; // Укажите адрес вашего сервера
-            var url = "http://localhost:7284/users/authenticate"; // Укажите адрес вашего сервера
+            var url = "https://localhost:7284/users/authenticate";
 
-            var jsonContent = JsonSerializer.Serialize(login);
-            var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
-
-            var response = await client.PostAsync(url, content);
+            var response = await client.PostAsJsonAsync(url, login);
             if (response.IsSuccessStatusCode)
             {
-                var responseString = await response.Content.ReadAsStringAsync();
-                var result = JsonSerializer.Deserialize<AuthenticationResponse>(responseString);
-                return result?.Authenticated ?? false;
+                var result = await response.Content.ReadFromJsonAsync<Dictionary<string, bool>>();
+                return result != null && result.TryGetValue("authenticated", out bool isAuthenticated) && isAuthenticated;
             }
-
             return false;
         }
 

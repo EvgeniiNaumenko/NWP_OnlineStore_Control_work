@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http.Json;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -39,7 +40,13 @@ namespace OnlineStore.Forms.Register
                 };
 
                 var success = await RegisterUserAsync(user);
-                Console.WriteLine(success ? "Регистрация прошла успешно!" : "Пользователь с таким логином уже существует.");
+                MessageBox.Show(success ? "Registration was successful!" : "User with this login already exists");
+                if(success)
+                {
+                    Login loginForm = new Login();
+                    loginForm.Show();
+                    this.Close();
+                }
             }
         }
 
@@ -48,6 +55,10 @@ namespace OnlineStore.Forms.Register
             _loginForm.Show();
             this.Close();
         }
+
+
+        // Methods
+
         private bool AreTextBoxesNotEmpty()
         {
 
@@ -66,18 +77,13 @@ namespace OnlineStore.Forms.Register
 
         public static async Task<bool> RegisterUserAsync(User user)
         {
-            //var url = "http://localhost:5000/users/register"; // поменять на свой адрес
-            var url = "http://localhost:7284/users/register"; // поменять на свой адрес
+            var url = "https://localhost:7284/users/register";   // Женя
 
-            var jsonContent = JsonSerializer.Serialize(user);
-            var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
-
-            var response = await client.PostAsync(url, content);
+            var response = await client.PostAsJsonAsync(url, user);
             if (response.IsSuccessStatusCode)
             {
-                var responseString = await response.Content.ReadAsStringAsync();
-                var result = JsonSerializer.Deserialize<RegistrationResponse>(responseString);
-                return result?.Registered ?? false;
+                var result = await response.Content.ReadFromJsonAsync<RegistrationResponse>();
+                return result != null && result.Registered;
             }
 
             return false;

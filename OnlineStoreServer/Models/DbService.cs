@@ -22,7 +22,7 @@ namespace OnlineStoreServer.Models
         }
 
         //2) регистрация нового пользователя
-=======
+
         //public async Task<bool> AuthenticateUserAsync(string login, string password)
         //{
         //    //return await _context.Users.AnyAsync(u => u.Login == login && u.Password == password);

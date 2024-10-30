@@ -1,3 +1,5 @@
+using OnlineStore.Forms.UserInterface;
+
 namespace OnlineStore
 {
     internal static class Program

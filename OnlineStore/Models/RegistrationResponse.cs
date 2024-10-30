@@ -9,6 +9,5 @@ namespace OnlineStore.Models
     public class RegistrationResponse
     {
         public bool Registered { get; set; }
-        public string Message { get; set; }
     }
 }

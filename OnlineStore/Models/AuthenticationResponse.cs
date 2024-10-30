@@ -9,5 +9,6 @@ namespace OnlineStore.Models
     public class AuthenticationResponse
     {
         public bool Authenticated { get; set; }
+        public int? UserId { get; set; }
     }
 }

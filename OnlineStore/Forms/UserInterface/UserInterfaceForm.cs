@@ -22,8 +22,7 @@ namespace OnlineStore.Forms.UserInterface
         {
             CreateCards(12);
         }
-
-        private void CreateCards(int numberOfCards)
+       private async void CreateCards(int numberOfCards)
         {
             flowLayoutPanel1.Controls.Clear(); // Очищаем панель перед добавлением новых карточек
 
@@ -41,12 +40,27 @@ namespace OnlineStore.Forms.UserInterface
                 // Создаём PictureBox для изображения
                 PictureBox pictureBox = new PictureBox
                 {
-                    //Image = Image.FromFile("D:\\ЖЕНЯ\\Обучение\\курс\\img\\photo_2023-07-20_12-01-53.jpg"), // Укажите путь к изображению
-                    Image = Image.FromFile("C:\\Users\\admin\\Desktop\\Coollama.jpeg"), // Укажите путь к изображению
                     SizeMode = PictureBoxSizeMode.Zoom,
                     Dock = DockStyle.Top,
                     Height = 150
                 };
+
+                // Загрузка изображения из URL
+                string imageUrl = "https://github.com/EvgeniiNaumenko/QuizChatBotImages/blob/main/images/cartoonQuiz/1.jpg?raw=true";
+                try
+                {
+                    using (var httpClient = new HttpClient())
+                    {
+                        var imageStream = await httpClient.GetStreamAsync(imageUrl);
+                        pictureBox.Image = Image.FromStream(imageStream);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ошибка загрузки изображения: {ex.Message}");
+                    // Вы можете установить изображение по умолчанию, если загрузка не удалась
+                    pictureBox.Image = Image.FromFile("path_to_default_image.jpg"); // Укажите путь к изображению по умолчанию
+                }
 
                 // Создаём Label для описания
                 Label descriptionLabel = new Label
@@ -71,7 +85,7 @@ namespace OnlineStore.Forms.UserInterface
                 {
                     Text = "Кнопка 1",
                     Dock = DockStyle.Bottom,
-                    Size = new Size(70,30),
+                    Size = new Size(70, 30),
                     Margin = new Padding(5),
                     BackColor = Color.FromArgb(41, 128, 185),
                     FlatStyle = FlatStyle.Flat,
@@ -79,12 +93,10 @@ namespace OnlineStore.Forms.UserInterface
                     ForeColor = Color.White,
                     Tag = i // Сохраняем номер карточки в Tag для идентификации
                 };
-                //button1.Click += Button1_Click; // Добавляем обработчик нажатия
 
                 // Создаём вторую кнопку
                 Button button2 = new Button
                 {
-
                     Text = "Кнопка 2",
                     Dock = DockStyle.Bottom,
                     Size = new Size(70, 30),
@@ -95,7 +107,6 @@ namespace OnlineStore.Forms.UserInterface
                     ForeColor = Color.White,
                     Tag = i // Сохраняем номер карточки в Tag для идентификации
                 };
-                //button2.Click += Button2_Click; // Добавляем обработчик нажатия
 
                 // Добавляем элементы в панель карточки
                 cardPanel.Controls.Add(button2); // Внизу
@@ -108,6 +119,7 @@ namespace OnlineStore.Forms.UserInterface
                 flowLayoutPanel1.Controls.Add(cardPanel);
             }
         }
+
 
         //// Обработчик для кнопки 1
         //private void Button1_Click(object sender, EventArgs e)

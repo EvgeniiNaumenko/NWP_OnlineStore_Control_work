@@ -5,12 +5,8 @@
         public int Id { get; set; }
         public string Name { get; set; }
         public string Category { get; set; }
+        public string Description {  get; set; }
         public decimal Price { get; set; }
-
-
-        public int ProductDescriptionId { get; set; }
-        public ProductDescription Description { get; set; }
-
 
         public ICollection<ProductImage> Images { get; set; } = new List<ProductImage>();
 

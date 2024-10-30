@@ -113,7 +113,7 @@ namespace OnlineStore.Forms
             OpenChildForm(new DashboardForm());
         }
 
-        private void ProductsBtn_Click(object sender, EventArgs e)
+        private void MySalesBtn_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color2);
             OpenChildForm(new ProductsForm());
@@ -122,7 +122,7 @@ namespace OnlineStore.Forms
         private void OrdersBtn_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color3);
-            OpenChildForm(new OrdersForm());
+            OpenChildForm(new MySalesForm());
         }
 
         private void Customer_Click(object sender, EventArgs e)

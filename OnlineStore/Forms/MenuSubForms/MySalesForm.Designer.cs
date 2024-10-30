@@ -1,6 +1,6 @@
 ﻿namespace OnlineStore.Forms.MenuSubForms
 {
-    partial class ProductsForm
+    partial class MySalesForm
     {
         /// <summary>
         /// Required designer variable.
@@ -30,19 +30,16 @@
         {
             SuspendLayout();
             // 
-            // ProductsForm
+            // MySalesForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(34, 33, 74);
             ClientSize = new Size(800, 450);
-            Name = "ProductsForm";
-            Text = "ProductsForm";
+            Name = "MySalesForm";
+            Text = "MySalesForm";
             ResumeLayout(false);
         }
 
         #endregion
-
-        private Button button1;
     }
 }

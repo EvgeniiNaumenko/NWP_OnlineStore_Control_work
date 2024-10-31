@@ -21,10 +21,17 @@ namespace OnlineStore.Forms
         private IconButton currentBtn;
         private Panel leftBorderBtn;
         private Form currentChildForm;
+        private int? _userId;
 
-        public MainMenuForm()
+        public MainMenuForm(int? userId)
         {
             InitializeComponent();
+            // userId from LoginMenu
+            _userId = userId;
+
+
+
+            // Forms and buttons settings
             leftBorderBtn = new Panel();
             leftBorderBtn.Size = new Size(7, 60);   // высота ширина / 60 стоит как высота у кнопок
             MenuPanel.Controls.Add(leftBorderBtn);

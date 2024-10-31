@@ -30,6 +30,9 @@ namespace OnlineStoreServer.Models
                 .HasForeignKey(p => p.UserId)
                 .OnDelete(DeleteBehavior.Cascade);
 
+
+
+
             base.OnModelCreating(modelBuilder);
         }
     }

@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using OnlineStoreServer.Models;
@@ -10,12 +11,23 @@ class Program
 
         builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
-        options.UseSqlServer(@"Server=DESKTOP-C317JNM;Database=OnlineStoreDB;Trusted_Connection=True;TrustServerCertificate=True;")); // Evgenii
-        //options.UseSqlServer(@"Server=DESKTOP-V6G1V7P;Database=OnlineStoreDB;Trusted_Connection=True;TrustServerCertificate=True;")); // Den
+        //options.UseSqlServer(@"Server=DESKTOP-C317JNM;Database=OnlineStoreDB;Trusted_Connection=True;TrustServerCertificate=True;")); // Evgenii
+        options.UseSqlServer(@"Server=DESKTOP-V6G1V7P;Database=OnlineStoreDB;Trusted_Connection=True;TrustServerCertificate=True;")); // Den
 
         builder.Services.AddScoped<DbService>();
 
         var app = builder.Build();
+
+        // Создание Бд если ее нету
+        using (var scope = app.Services.CreateScope())
+        {
+            var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+            dbContext.Database.EnsureDeleted();
+            dbContext.Database.EnsureCreated();
+
+            // Заполнение тестовыми данными
+            //SeedDatabase(dbContext);
+        }
 
         app.MapGet("/", () => "Hello World!");
 
@@ -45,6 +57,11 @@ class Program
             bool success = await dbService.AddProductAsync(productRequest);
             return Results.Json(new { added = success });
         });
+
+
+
+
+
         app.Run();
     }
 }

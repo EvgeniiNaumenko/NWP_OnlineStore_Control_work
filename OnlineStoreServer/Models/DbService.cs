@@ -11,41 +11,16 @@ namespace OnlineStoreServer.Models
         {
             _context = context;
         }
-        //1)проверка существует ли ЮЗЕР
 
+        //1)проверка существует ли ЮЗЕР
         public async Task<int?> AuthenticateUserAsync(string login, string password)
         {
-            var user = await _context.Users
-                .FirstOrDefaultAsync(u => u.Login == login && u.Password == password);
-
-            return user?.Id; 
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Login == login);
+            if (user == null) return null;
+            return VerifyPassword(user.Password, password) ? user.Id : (int?)null;
         }
 
-        //2) регистрация нового пользователя
-
-        //public async Task<bool> AuthenticateUserAsync(string login, string password)
-        //{
-        //    //return await _context.Users.AnyAsync(u => u.Login == login && u.Password == password);
-        //    var userExists = await _context.Users.AnyAsync(u => u.Login == login && u.Password == password);
-        //    Console.WriteLine($"User exists: {userExists} for login: {login}");
-        //    return userExists;
-        //}
-        //2) регистрациz нового пользователя
-        //public async Task<bool> RegisterUserAsync(User user)
-        //{
-
-        //    bool userExists = await _context.Users.AnyAsync(u => u.Login == user.Login);
-        //    if (userExists)
-        //    {
-        //        return false; 
-        //    }
-        //    _context.Users.Add(user);
-        //    await _context.SaveChangesAsync();
-        //    return true; 
-        //}
-
         //2) регистрациz нового пользователя и хеширование пароля
-
         public async Task<bool> RegisterUserAsync(User user)
         {
             bool userExists = await _context.Users.AnyAsync(u => u.Login == user.Login);
@@ -65,7 +40,11 @@ namespace OnlineStoreServer.Models
             var hasher = new PasswordHasher<string>();
             return hasher.HashPassword(null, password);
         }
-
+        private bool VerifyPassword(string hashedPassword, string password)
+        {
+            var hasher = new PasswordHasher<string>();
+            return hasher.VerifyHashedPassword(null, hashedPassword, password) == PasswordVerificationResult.Success;
+        }
 
         //3) добавление продукта
         public async Task<bool> AddProductAsync(ProductRequest productRequest)

@@ -1,4 +1,5 @@
-﻿namespace OnlineStoreServer.Models
+﻿
+namespace OnlineStoreServer.Models
 {
     public class User
     {
@@ -9,8 +10,8 @@
         public string Surname { get; set; }
         public string Address { get; set; }
         public string PhoneNumber { get; set; }
-
         public ICollection<Product> Products { get; set; } = new List<Product>();
+        //public ICollection<CartItem> CartItems { get; set; } = new List<CartItem>();
     }
 
 }

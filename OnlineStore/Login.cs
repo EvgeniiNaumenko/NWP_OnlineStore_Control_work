@@ -71,7 +71,7 @@ namespace OnlineStore
 
                 if (userId.HasValue)
                 {
-                    MainMenuForm menuForm = new MainMenuForm
+                    MainMenuForm menuForm = new MainMenuForm(userId)
                     {
                         //UserId = userId.Value // �������� UserId � �����, ���� ��� ����������
                     };
@@ -120,12 +120,12 @@ namespace OnlineStore
 
         private void button2_Click(object sender, EventArgs e)
         {
-            //UserInterfaceForm userInterForm = new UserInterfaceForm();
-            //userInterForm.Show();
+            UserInterfaceForm userInterForm = new UserInterfaceForm();
+            userInterForm.Show();
 
 
-            MainMenuForm menuForm = new MainMenuForm();
-            menuForm.Show();
+            //MainMenuForm menuForm = new MainMenuForm();
+            //menuForm.Show();
             this.Hide();
         }
     }

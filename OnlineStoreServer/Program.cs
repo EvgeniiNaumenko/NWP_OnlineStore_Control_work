@@ -76,7 +76,12 @@ class Program
             bool deleted = await dbService.DeleteProductAsync(id);
             return deleted ? Results.Ok(new { deleted = true }) : Results.NotFound(new { deleted = false });
         });
-
+        // 6) filter requers
+        app.MapPost("/products/filter", async (ProductFilterRequest filterRequest, DbService dbService) =>
+        {
+            var products = await dbService.GetFilteredProductsAsync(filterRequest);
+            return Results.Json(products);
+        });
 
 
         // Cart Methods: 

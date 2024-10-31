@@ -49,7 +49,6 @@ namespace OnlineStore.Forms.MenuSubForms
 
             for (int i = 0; i < list.Count; i++)
             {
-                // Создаём панель для карточки
                 Panel cardPanel = new Panel
                 {
                     Size = new Size(300, 400),
@@ -60,7 +59,6 @@ namespace OnlineStore.Forms.MenuSubForms
                     Tag = i 
                 };
 
-                // Создаём PictureBox для изображения
                 PictureBox pictureBox = new PictureBox
                 {
                     SizeMode = PictureBoxSizeMode.StretchImage,
@@ -68,7 +66,6 @@ namespace OnlineStore.Forms.MenuSubForms
                     Dock = DockStyle.Top,
                 };
 
-                // Загрузка изображения из URL
                 string imageUrl = list[i].imageUrl;
                 try
                 {
@@ -121,21 +118,6 @@ namespace OnlineStore.Forms.MenuSubForms
                      AutoSize = true
 
                  };
-
-                // Создаём первую кнопку
-                //Button editBtn = new Button
-                //{
-                //    Text = "Редактировать",
-                //    Dock = DockStyle.Bottom,
-                //    Size = new Size(70, 30),
-                //    Margin = new Padding(5),
-                //    BackColor = Color.FromArgb(41, 128, 185),
-                //    FlatStyle = FlatStyle.Flat,
-                //    Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0),
-                //    ForeColor = Color.White,
-                //    Tag = i 
-                //};
-                // Создаём первую кнопку
                 Button deleteBtn = new Button
                 {
                     Text = "Удалить",
@@ -169,7 +151,6 @@ namespace OnlineStore.Forms.MenuSubForms
                 cardPanel.Controls.Add(nameLabel);
                 cardPanel.Controls.Add(pictureBox);
                 cardPanel.Controls.Add(priceLabel);
-                //cardPanel.Controls.Add(editBtn);
                 cardPanel.Controls.Add(deleteBtn);
 
                 MyProductsPanel.Controls.Add(cardPanel);

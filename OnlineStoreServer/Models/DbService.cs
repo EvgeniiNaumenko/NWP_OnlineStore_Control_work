@@ -190,5 +190,36 @@ namespace OnlineStoreServer.Models
 
 
 
+        //6) поиск по фильтру
+        public async Task<List<Product>> GetFilteredProductsAsync(ProductFilterRequest filterRequest)
+        {
+            var query = _context.Products.AsQueryable();
+
+            if (!string.IsNullOrEmpty(filterRequest.Name))
+            {
+                query = query.Where(p => p.Name.Contains(filterRequest.Name));
+            }
+
+            if (!string.IsNullOrEmpty(filterRequest.Category))
+            {
+                query = query.Where(p => p.Category == filterRequest.Category);
+            }
+
+            if (filterRequest.MinPrice.HasValue)
+            {
+                query = query.Where(p => p.Price >= filterRequest.MinPrice.Value);
+            }
+
+            if (filterRequest.MaxPrice.HasValue)
+            {
+                query = query.Where(p => p.Price <= filterRequest.MaxPrice.Value);
+            }
+
+            // Применение постраничной навигации
+            return await query
+                .Skip((filterRequest.Page - 1) * filterRequest.PageSize)
+                .Take(filterRequest.PageSize)
+                .ToListAsync();
+        }
     }
 }

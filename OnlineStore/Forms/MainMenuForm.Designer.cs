@@ -70,7 +70,7 @@
             MenuPanel.Location = new Point(0, 0);
             MenuPanel.Margin = new Padding(3, 4, 3, 4);
             MenuPanel.Name = "MenuPanel";
-            MenuPanel.Size = new Size(251, 789);
+            MenuPanel.Size = new Size(251, 722);
             MenuPanel.TabIndex = 0;
             // 
             // SettingsBtn
@@ -252,7 +252,7 @@
             TitleBarPanel.Location = new Point(251, 0);
             TitleBarPanel.Margin = new Padding(3, 4, 3, 4);
             TitleBarPanel.Name = "TitleBarPanel";
-            TitleBarPanel.Size = new Size(893, 100);
+            TitleBarPanel.Size = new Size(1097, 100);
             TitleBarPanel.TabIndex = 1;
             TitleBarPanel.MouseDown += TitleBarPanel_MouseDown;
             // 
@@ -262,7 +262,7 @@
             MaximizeBtn.FlatAppearance.BorderSize = 0;
             MaximizeBtn.FlatStyle = FlatStyle.Flat;
             MaximizeBtn.Image = (Image)resources.GetObject("MaximizeBtn.Image");
-            MaximizeBtn.Location = new Point(807, 4);
+            MaximizeBtn.Location = new Point(1011, 4);
             MaximizeBtn.Margin = new Padding(3, 4, 3, 4);
             MaximizeBtn.Name = "MaximizeBtn";
             MaximizeBtn.Size = new Size(27, 27);
@@ -277,7 +277,7 @@
             MinimizeBtn.FlatStyle = FlatStyle.Flat;
             MinimizeBtn.Image = (Image)resources.GetObject("MinimizeBtn.Image");
             MinimizeBtn.ImageAlign = ContentAlignment.BottomCenter;
-            MinimizeBtn.Location = new Point(762, 4);
+            MinimizeBtn.Location = new Point(966, 4);
             MinimizeBtn.Margin = new Padding(3, 4, 3, 4);
             MinimizeBtn.Name = "MinimizeBtn";
             MinimizeBtn.Size = new Size(27, 27);
@@ -291,7 +291,7 @@
             CloseBtn.FlatAppearance.BorderSize = 0;
             CloseBtn.FlatStyle = FlatStyle.Flat;
             CloseBtn.Image = (Image)resources.GetObject("CloseBtn.Image");
-            CloseBtn.Location = new Point(851, 4);
+            CloseBtn.Location = new Point(1055, 4);
             CloseBtn.Margin = new Padding(3, 4, 3, 4);
             CloseBtn.Name = "CloseBtn";
             CloseBtn.Size = new Size(27, 27);
@@ -333,7 +333,7 @@
             ShadowPanel.Location = new Point(251, 100);
             ShadowPanel.Margin = new Padding(3, 4, 3, 4);
             ShadowPanel.Name = "ShadowPanel";
-            ShadowPanel.Size = new Size(893, 12);
+            ShadowPanel.Size = new Size(1097, 12);
             ShadowPanel.TabIndex = 2;
             // 
             // DesktopPanel
@@ -344,14 +344,14 @@
             DesktopPanel.Location = new Point(251, 112);
             DesktopPanel.Margin = new Padding(3, 4, 3, 4);
             DesktopPanel.Name = "DesktopPanel";
-            DesktopPanel.Size = new Size(893, 677);
+            DesktopPanel.Size = new Size(1097, 610);
             DesktopPanel.TabIndex = 3;
             // 
             // pictureBox1
             // 
             pictureBox1.Anchor = AnchorStyles.None;
             pictureBox1.Image = Properties.Resources.Coollama;
-            pictureBox1.Location = new Point(130, 75);
+            pictureBox1.Location = new Point(232, 42);
             pictureBox1.Margin = new Padding(3, 4, 3, 4);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(624, 455);
@@ -363,7 +363,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1144, 789);
+            ClientSize = new Size(1348, 722);
             Controls.Add(DesktopPanel);
             Controls.Add(ShadowPanel);
             Controls.Add(TitleBarPanel);

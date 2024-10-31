@@ -7,6 +7,7 @@ using OnlineStore.Models;
 using OnlineStore.Forms.UserInterface;
 using OnlineStore.Forms;
 using System.Net.Http.Json;
+using OnlineStore.Forms.MenuSubForms;
 
 namespace OnlineStore
 {
@@ -120,13 +121,20 @@ namespace OnlineStore
 
         private void button2_Click(object sender, EventArgs e)
         {
-            //UserInterfaceForm userInterForm = new UserInterfaceForm();
-            //userInterForm.Show();
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                // Устанавливаем фильтр для выбора только изображений
+                openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp;*.gif";
+                openFileDialog.Title = "Выберите изображение";
 
-
-            MainMenuForm menuForm = new MainMenuForm();
-            menuForm.Show();
-            this.Hide();
+                // Проверяем, выбрал ли пользователь файл
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    // Отображаем выбранное изображение в PictureBox
+                    //pictureBox1.Image = Image.FromFile(openFileDialog.FileName);
+                    MessageBox.Show("good");
+                }
+            }
         }
     }
 }

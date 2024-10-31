@@ -12,10 +12,11 @@ namespace OnlineStore.Forms.UserInterface
 {
     public partial class UserInterfaceForm : Form
     {
-        public UserInterfaceForm()
+        public static Login _loginForm;
+        public UserInterfaceForm(Login loginForm)
         {
             InitializeComponent();
-
+            _loginForm = loginForm;
         }
 
         private void button1_Click(object sender, EventArgs e)

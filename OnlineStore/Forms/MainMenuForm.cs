@@ -123,7 +123,7 @@ namespace OnlineStore.Forms
         private void MySalesBtn_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color2);
-           OpenChildForm(new MySalesForm());
+            OpenChildForm(new MySalesForm());
         }
 
         private void OrdersBtn_Click(object sender, EventArgs e)
@@ -141,7 +141,7 @@ namespace OnlineStore.Forms
         private void iconButton5_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color5);
-            OpenChildForm(new iconButton5Form());
+            OpenChildForm(new CartForm());
         }
 
         private void SettingsBtn_Click(object sender, EventArgs e)
@@ -180,13 +180,16 @@ namespace OnlineStore.Forms
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
 
-        //Close-Maximize-Minimize
-        private void CloseBtn_Click(object sender, EventArgs e)
+
+
+
+        //Close Maximize Minimize btns
+        private void CloseBtn_Click_1(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-        private void MaximizeBtn_Click(object sender, EventArgs e)
+        private void MaximizeBtn_Click_1(object sender, EventArgs e)
         {
             if (WindowState == FormWindowState.Normal)
                 WindowState = FormWindowState.Maximized;
@@ -194,10 +197,9 @@ namespace OnlineStore.Forms
                 WindowState = FormWindowState.Normal;
         }
 
-        private void MinimizeBtn_Click(object sender, EventArgs e)
+        private void MinimizeBtn_Click_1(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Minimized;
         }
-
     }
 }

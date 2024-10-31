@@ -48,8 +48,9 @@ namespace OnlineStore.Forms.MenuSubForms
             FilterPanel.Controls.Add(FilterBtn);
             FilterPanel.Dock = DockStyle.Top;
             FilterPanel.Location = new Point(0, 0);
+            FilterPanel.Margin = new Padding(3, 2, 3, 2);
             FilterPanel.Name = "FilterPanel";
-            FilterPanel.Size = new Size(851, 50);
+            FilterPanel.Size = new Size(745, 40);
             FilterPanel.TabIndex = 0;
             // 
             // ClearBtn
@@ -62,11 +63,11 @@ namespace OnlineStore.Forms.MenuSubForms
             ClearBtn.IconColor = Color.Gainsboro;
             ClearBtn.IconFont = IconFont.Auto;
             ClearBtn.IconSize = 40;
-            ClearBtn.Location = new Point(796, 0);
-            ClearBtn.Margin = new Padding(10);
+            ClearBtn.Location = new Point(696, 0);
+            ClearBtn.Margin = new Padding(9, 8, 9, 8);
             ClearBtn.Name = "ClearBtn";
-            ClearBtn.Padding = new Padding(5, 10, 5, 5);
-            ClearBtn.Size = new Size(50, 48);
+            ClearBtn.Padding = new Padding(4, 8, 4, 4);
+            ClearBtn.Size = new Size(44, 36);
             ClearBtn.TabIndex = 0;
             ClearBtn.UseVisualStyleBackColor = false;
             ClearBtn.Click += ClearBtn_Click;
@@ -81,11 +82,11 @@ namespace OnlineStore.Forms.MenuSubForms
             FilterBtn.IconColor = Color.Gainsboro;
             FilterBtn.IconFont = IconFont.Auto;
             FilterBtn.IconSize = 40;
-            FilterBtn.Location = new Point(740, 0);
-            FilterBtn.Margin = new Padding(10);
+            FilterBtn.Location = new Point(648, 0);
+            FilterBtn.Margin = new Padding(9, 8, 9, 8);
             FilterBtn.Name = "FilterBtn";
-            FilterBtn.Padding = new Padding(5, 10, 5, 5);
-            FilterBtn.Size = new Size(50, 48);
+            FilterBtn.Padding = new Padding(4, 8, 4, 4);
+            FilterBtn.Size = new Size(44, 36);
             FilterBtn.TabIndex = 0;
             FilterBtn.UseVisualStyleBackColor = false;
             FilterBtn.Click += FilterBtn_Click;
@@ -143,22 +144,22 @@ namespace OnlineStore.Forms.MenuSubForms
             // 
             FilterProductsPanel.AutoScroll = true;
             FilterProductsPanel.Dock = DockStyle.Fill;
-            FilterProductsPanel.Location = new Point(0, 50);
+            FilterProductsPanel.Location = new Point(0, 40);
+            FilterProductsPanel.Margin = new Padding(3, 2, 3, 2);
             FilterProductsPanel.Name = "FilterProductsPanel";
-            FilterProductsPanel.Size = new Size(851, 425);
+            FilterProductsPanel.Size = new Size(745, 316);
             FilterProductsPanel.TabIndex = 1;
             // 
             // DashboardForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(34, 33, 74);
-            ClientSize = new Size(851, 475);
+            ClientSize = new Size(745, 356);
             Controls.Add(FilterProductsPanel);
             Controls.Add(FilterPanel);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "DashboardForm";
-            Text = "DashboardForm";
+            Text = "Dashboard";
             FilterPanel.ResumeLayout(false);
             PagesPanel.ResumeLayout(false);
             ResumeLayout(false);

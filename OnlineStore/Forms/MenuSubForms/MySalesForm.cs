@@ -40,6 +40,7 @@ namespace OnlineStore.Forms.MenuSubForms
         {
             var url = $"{Global.serverUrl}products/user/{userId}";
             myProducts = await Global.httpClient.GetFromJsonAsync<List<Product>>(url);
+            CreateCards(myProducts);
         }
 
 

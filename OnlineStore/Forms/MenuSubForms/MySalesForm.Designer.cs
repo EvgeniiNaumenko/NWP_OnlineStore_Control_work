@@ -92,7 +92,7 @@
             Controls.Add(MyProductsPanel);
             Controls.Add(AddProductButton);
             Name = "MySalesForm";
-            Text = "MySalesForm";
+            Text = "MySales";
             ResumeLayout(false);
         }
 

@@ -48,7 +48,7 @@
             ClientSize = new Size(800, 450);
             Controls.Add(button1);
             Name = "CustomerForm";
-            Text = "CustomerForm";
+            Text = "Customer";
             ResumeLayout(false);
         }
 

@@ -1,4 +1,6 @@
-﻿namespace OnlineStore.Forms
+﻿using System.Windows.Media.Media3D;
+
+namespace OnlineStore.Forms
 {
     partial class MainMenuForm
     {
@@ -28,10 +30,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainMenuForm));
             MenuPanel = new Panel();
             SettingsBtn = new FontAwesome.Sharp.IconButton();
-            iconButton5 = new FontAwesome.Sharp.IconButton();
+            CartBtn = new FontAwesome.Sharp.IconButton();
             Customer = new FontAwesome.Sharp.IconButton();
             OrdersBtn = new FontAwesome.Sharp.IconButton();
             MySalesBtn = new FontAwesome.Sharp.IconButton();
@@ -39,9 +40,9 @@
             LogoPanel = new Panel();
             LogoHomeBtn = new PictureBox();
             TitleBarPanel = new Panel();
-            MaximizeBtn = new Button();
-            MinimizeBtn = new Button();
-            CloseBtn = new Button();
+            CloseBtn = new FontAwesome.Sharp.IconButton();
+            MinimizeBtn = new FontAwesome.Sharp.IconButton();
+            MaximizeBtn = new FontAwesome.Sharp.IconButton();
             TitleOfChildFormLabel = new Label();
             CurrentChildFormIconPicBox = new FontAwesome.Sharp.IconPictureBox();
             ShadowPanel = new Panel();
@@ -60,7 +61,7 @@
             // 
             MenuPanel.BackColor = Color.FromArgb(31, 30, 68);
             MenuPanel.Controls.Add(SettingsBtn);
-            MenuPanel.Controls.Add(iconButton5);
+            MenuPanel.Controls.Add(CartBtn);
             MenuPanel.Controls.Add(Customer);
             MenuPanel.Controls.Add(OrdersBtn);
             MenuPanel.Controls.Add(MySalesBtn);
@@ -69,7 +70,7 @@
             MenuPanel.Dock = DockStyle.Left;
             MenuPanel.Location = new Point(0, 0);
             MenuPanel.Name = "MenuPanel";
-            MenuPanel.Size = new Size(220, 551);
+            MenuPanel.Size = new Size(220, 611);
             MenuPanel.TabIndex = 0;
             // 
             // SettingsBtn
@@ -95,28 +96,28 @@
             SettingsBtn.UseVisualStyleBackColor = true;
             SettingsBtn.Click += SettingsBtn_Click;
             // 
-            // iconButton5
+            // CartBtn
             // 
-            iconButton5.Dock = DockStyle.Top;
-            iconButton5.FlatAppearance.BorderSize = 0;
-            iconButton5.FlatStyle = FlatStyle.Flat;
-            iconButton5.Font = new Font("Century Gothic", 10F);
-            iconButton5.ForeColor = Color.Gainsboro;
-            iconButton5.IconChar = FontAwesome.Sharp.IconChar.CartShopping;
-            iconButton5.IconColor = Color.Gainsboro;
-            iconButton5.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton5.IconSize = 32;
-            iconButton5.ImageAlign = ContentAlignment.MiddleLeft;
-            iconButton5.Location = new Point(0, 380);
-            iconButton5.Name = "iconButton5";
-            iconButton5.Padding = new Padding(10, 0, 20, 0);
-            iconButton5.Size = new Size(220, 60);
-            iconButton5.TabIndex = 6;
-            iconButton5.Text = "iconButton5";
-            iconButton5.TextAlign = ContentAlignment.MiddleLeft;
-            iconButton5.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconButton5.UseVisualStyleBackColor = true;
-            iconButton5.Click += iconButton5_Click;
+            CartBtn.Dock = DockStyle.Top;
+            CartBtn.FlatAppearance.BorderSize = 0;
+            CartBtn.FlatStyle = FlatStyle.Flat;
+            CartBtn.Font = new Font("Century Gothic", 10F);
+            CartBtn.ForeColor = Color.Gainsboro;
+            CartBtn.IconChar = FontAwesome.Sharp.IconChar.CartShopping;
+            CartBtn.IconColor = Color.Gainsboro;
+            CartBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            CartBtn.IconSize = 32;
+            CartBtn.ImageAlign = ContentAlignment.MiddleLeft;
+            CartBtn.Location = new Point(0, 380);
+            CartBtn.Name = "CartBtn";
+            CartBtn.Padding = new Padding(10, 0, 20, 0);
+            CartBtn.Size = new Size(220, 60);
+            CartBtn.TabIndex = 6;
+            CartBtn.Text = "Cart";
+            CartBtn.TextAlign = ContentAlignment.MiddleLeft;
+            CartBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
+            CartBtn.UseVisualStyleBackColor = true;
+            CartBtn.Click += iconButton5_Click;
             // 
             // Customer
             // 
@@ -148,7 +149,7 @@
             OrdersBtn.FlatStyle = FlatStyle.Flat;
             OrdersBtn.Font = new Font("Century Gothic", 10F);
             OrdersBtn.ForeColor = Color.Gainsboro;
-            OrdersBtn.IconChar = FontAwesome.Sharp.IconChar.CartShopping;
+            OrdersBtn.IconChar = FontAwesome.Sharp.IconChar.FolderBlank;
             OrdersBtn.IconColor = Color.Gainsboro;
             OrdersBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             OrdersBtn.IconSize = 32;
@@ -234,9 +235,9 @@
             // TitleBarPanel
             // 
             TitleBarPanel.BackColor = Color.FromArgb(26, 25, 62);
-            TitleBarPanel.Controls.Add(MaximizeBtn);
-            TitleBarPanel.Controls.Add(MinimizeBtn);
             TitleBarPanel.Controls.Add(CloseBtn);
+            TitleBarPanel.Controls.Add(MinimizeBtn);
+            TitleBarPanel.Controls.Add(MaximizeBtn);
             TitleBarPanel.Controls.Add(TitleOfChildFormLabel);
             TitleBarPanel.Controls.Add(CurrentChildFormIconPicBox);
             TitleBarPanel.Dock = DockStyle.Top;
@@ -246,53 +247,60 @@
             TitleBarPanel.TabIndex = 1;
             TitleBarPanel.MouseDown += TitleBarPanel_MouseDown;
             // 
-            // MaximizeBtn
+            // CloseBtn
             // 
-            MaximizeBtn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            MaximizeBtn.FlatAppearance.BorderSize = 0;
-            MaximizeBtn.FlatStyle = FlatStyle.Flat;
-            MaximizeBtn.Image = (Image)resources.GetObject("MaximizeBtn.Image");
-            MaximizeBtn.Location = new Point(746, 3);
-            MaximizeBtn.Name = "MaximizeBtn";
-            MaximizeBtn.Size = new Size(24, 20);
-            MaximizeBtn.TabIndex = 3;
-            MaximizeBtn.UseVisualStyleBackColor = true;
-            MaximizeBtn.Click += MaximizeBtn_Click;
+            CloseBtn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            CloseBtn.FlatAppearance.BorderSize = 0;
+            CloseBtn.FlatStyle = FlatStyle.Flat;
+            CloseBtn.IconChar = FontAwesome.Sharp.IconChar.Close;
+            CloseBtn.IconColor = SystemColors.HotTrack;
+            CloseBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            CloseBtn.IconSize = 25;
+            CloseBtn.Location = new Point(794, 3);
+            CloseBtn.Name = "CloseBtn";
+            CloseBtn.Size = new Size(20, 20);
+            CloseBtn.TabIndex = 4;
+            CloseBtn.UseVisualStyleBackColor = true;
+            CloseBtn.Click += CloseBtn_Click_1;
             // 
             // MinimizeBtn
             // 
             MinimizeBtn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             MinimizeBtn.FlatAppearance.BorderSize = 0;
             MinimizeBtn.FlatStyle = FlatStyle.Flat;
-            MinimizeBtn.Image = (Image)resources.GetObject("MinimizeBtn.Image");
-            MinimizeBtn.ImageAlign = ContentAlignment.BottomCenter;
-            MinimizeBtn.Location = new Point(706, 3);
+            MinimizeBtn.IconChar = FontAwesome.Sharp.IconChar.WindowMinimize;
+            MinimizeBtn.IconColor = SystemColors.HotTrack;
+            MinimizeBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            MinimizeBtn.IconSize = 25;
+            MinimizeBtn.Location = new Point(733, 3);
             MinimizeBtn.Name = "MinimizeBtn";
-            MinimizeBtn.Size = new Size(24, 20);
-            MinimizeBtn.TabIndex = 3;
+            MinimizeBtn.Size = new Size(18, 18);
+            MinimizeBtn.TabIndex = 4;
             MinimizeBtn.UseVisualStyleBackColor = true;
-            MinimizeBtn.Click += MinimizeBtn_Click;
+            MinimizeBtn.Click += MinimizeBtn_Click_1;
             // 
-            // CloseBtn
+            // MaximizeBtn
             // 
-            CloseBtn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            CloseBtn.FlatAppearance.BorderSize = 0;
-            CloseBtn.FlatStyle = FlatStyle.Flat;
-            CloseBtn.ForeColor = SystemColors.ControlText;
-            CloseBtn.Image = (Image)resources.GetObject("CloseBtn.Image");
-            CloseBtn.Location = new Point(784, 3);
-            CloseBtn.Name = "CloseBtn";
-            CloseBtn.Size = new Size(24, 20);
-            CloseBtn.TabIndex = 3;
-            CloseBtn.UseVisualStyleBackColor = true;
-            CloseBtn.Click += CloseBtn_Click;
+            MaximizeBtn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            MaximizeBtn.FlatAppearance.BorderSize = 0;
+            MaximizeBtn.FlatStyle = FlatStyle.Flat;
+            MaximizeBtn.IconChar = FontAwesome.Sharp.IconChar.WindowMaximize;
+            MaximizeBtn.IconColor = SystemColors.HotTrack;
+            MaximizeBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            MaximizeBtn.IconSize = 25;
+            MaximizeBtn.Location = new Point(766, 5);
+            MaximizeBtn.Name = "MaximizeBtn";
+            MaximizeBtn.Size = new Size(18, 18);
+            MaximizeBtn.TabIndex = 4;
+            MaximizeBtn.UseVisualStyleBackColor = true;
+            MaximizeBtn.Click += MaximizeBtn_Click_1;
             // 
             // TitleOfChildFormLabel
             // 
             TitleOfChildFormLabel.AutoSize = true;
             TitleOfChildFormLabel.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
             TitleOfChildFormLabel.ForeColor = Color.Gainsboro;
-            TitleOfChildFormLabel.Location = new Point(54, 27);
+            TitleOfChildFormLabel.Location = new Point(57, 30);
             TitleOfChildFormLabel.Name = "TitleOfChildFormLabel";
             TitleOfChildFormLabel.Size = new Size(47, 17);
             TitleOfChildFormLabel.TabIndex = 1;
@@ -305,9 +313,10 @@
             CurrentChildFormIconPicBox.IconChar = FontAwesome.Sharp.IconChar.House;
             CurrentChildFormIconPicBox.IconColor = Color.MediumPurple;
             CurrentChildFormIconPicBox.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            CurrentChildFormIconPicBox.IconSize = 35;
             CurrentChildFormIconPicBox.Location = new Point(18, 22);
             CurrentChildFormIconPicBox.Name = "CurrentChildFormIconPicBox";
-            CurrentChildFormIconPicBox.Size = new Size(32, 32);
+            CurrentChildFormIconPicBox.Size = new Size(35, 35);
             CurrentChildFormIconPicBox.TabIndex = 0;
             CurrentChildFormIconPicBox.TabStop = false;
             // 
@@ -328,14 +337,14 @@
             DesktopPanel.Dock = DockStyle.Fill;
             DesktopPanel.Location = new Point(220, 84);
             DesktopPanel.Name = "DesktopPanel";
-            DesktopPanel.Size = new Size(821, 467);
+            DesktopPanel.Size = new Size(821, 527);
             DesktopPanel.TabIndex = 3;
             // 
             // pictureBox1
             // 
             pictureBox1.Anchor = AnchorStyles.None;
             pictureBox1.Image = Properties.Resources.Coollama;
-            pictureBox1.Location = new Point(133, 36);
+            pictureBox1.Location = new Point(133, 66);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(546, 341);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
@@ -346,7 +355,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1041, 551);
+            ClientSize = new Size(1041, 611);
             Controls.Add(DesktopPanel);
             Controls.Add(ShadowPanel);
             Controls.Add(TitleBarPanel);
@@ -371,7 +380,7 @@
         private Panel LogoPanel;
         private FontAwesome.Sharp.IconButton DashboardBtn;
         private FontAwesome.Sharp.IconButton SettingsBtn;
-        private FontAwesome.Sharp.IconButton iconButton5;
+        private FontAwesome.Sharp.IconButton CartBtn;
         private FontAwesome.Sharp.IconButton Customer;
         private FontAwesome.Sharp.IconButton OrdersBtn;
         private FontAwesome.Sharp.IconButton MySalesBtn;
@@ -382,8 +391,8 @@
         private Panel ShadowPanel;
         private Panel DesktopPanel;
         private PictureBox pictureBox1;
-        private Button CloseBtn;
-        private Button MaximizeBtn;
-        private Button MinimizeBtn;
+        private FontAwesome.Sharp.IconButton CloseBtn;
+        private FontAwesome.Sharp.IconButton MaximizeBtn;
+        private FontAwesome.Sharp.IconButton MinimizeBtn;
     }
 }

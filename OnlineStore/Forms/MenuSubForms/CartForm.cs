@@ -11,11 +11,11 @@ using OnlineStore.Models.Cart;
 
 namespace OnlineStore.Forms
 {
-    public partial class iconButton5Form : Form
+    public partial class CartForm : Form
     {
         public static List<Product> myProducts;
 
-        public iconButton5Form()
+        public CartForm()
         {
             InitializeComponent();
             _ = LoadCartItemsByUserIdAsync(Global.userId);

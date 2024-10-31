@@ -1,6 +1,6 @@
 ﻿namespace OnlineStore.Forms
 {
-    partial class iconButton5Form
+    partial class CartForm
     {
         private System.ComponentModel.IContainer components = null;
         private System.Windows.Forms.FlowLayoutPanel MyCartPanel;
@@ -23,17 +23,19 @@
             titleLabel = new Label();
             totalPriceLabel = new Label();
             SuspendLayout();
-
+            // 
             // MyCartPanel
+            // 
             MyCartPanel.AutoScroll = true;
             MyCartPanel.Dock = DockStyle.Fill;
             MyCartPanel.Location = new Point(0, 38);
             MyCartPanel.Name = "MyCartPanel";
             MyCartPanel.Padding = new Padding(10);
-            MyCartPanel.Size = new Size(700, 431);
+            MyCartPanel.Size = new Size(700, 432);
             MyCartPanel.TabIndex = 0;
-
+            // 
             // titleLabel
+            // 
             titleLabel.Dock = DockStyle.Top;
             titleLabel.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 204);
             titleLabel.ForeColor = SystemColors.Control;
@@ -43,17 +45,21 @@
             titleLabel.TabIndex = 1;
             titleLabel.Text = "My Cart";
             titleLabel.TextAlign = ContentAlignment.MiddleCenter;
-
+            // 
             // totalPriceLabel
+            // 
             totalPriceLabel.Dock = DockStyle.Bottom;
-            totalPriceLabel.Font = new Font("Arial", 14, FontStyle.Bold);
+            totalPriceLabel.Font = new Font("Arial", 14F, FontStyle.Bold);
             totalPriceLabel.ForeColor = Color.White;
-            totalPriceLabel.TextAlign = ContentAlignment.MiddleCenter;
-            totalPriceLabel.Text = "Total Price: $0";
+            totalPriceLabel.Location = new Point(0, 470);
+            totalPriceLabel.Name = "totalPriceLabel";
             totalPriceLabel.Size = new Size(700, 30);
             totalPriceLabel.TabIndex = 2;
-
-            // iconButton5Form
+            totalPriceLabel.Text = "Total Price: $0";
+            totalPriceLabel.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // CartForm
+            // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(34, 33, 74);
@@ -61,8 +67,8 @@
             Controls.Add(MyCartPanel);
             Controls.Add(totalPriceLabel);
             Controls.Add(titleLabel);
-            Name = "iconButton5Form";
-            Text = "MyCart";
+            Name = "CartForm";
+            Text = "Cart";
             ResumeLayout(false);
         }
 

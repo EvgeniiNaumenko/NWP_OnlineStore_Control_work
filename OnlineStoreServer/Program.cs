@@ -27,7 +27,7 @@ class Program
             var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
             //dbContext.Database.EnsureDeleted();
             //dbContext.Database.EnsureCreated();
-            //SeedData(dbContext); // Вызов метода SeedData
+            //SeedData(dbContext); 
         }
 
         app.MapGet("/", () => "Hello World!");
@@ -113,46 +113,46 @@ class Program
         app.Run();
     }
 
-    //  УБрать потом 
+    //УБрать потом
 
-    //private static void SeedData(ApplicationDbContext context)
-    //{
-    //    // Получение пользователя с Id = 1
-    //    var user = context.Users.Find(1);
-    //    if (user == null)
-    //    {
-    //        Console.WriteLine("Пользователь с ID = 1 не найден.");
-    //        return;
-    //    }
+    private static void SeedData(ApplicationDbContext context)
+    {
+        // Получение пользователя с Id = 1
+        var user = context.Users.Find(1);
+        if (user == null)
+        {
+            Console.WriteLine("Пользователь с ID = 1 не найден.");
+            return;
+        }
 
-    //    // Список существующих ID продуктов
-    //    var existingProductIds = new List<int> { 1, 2 };
+        // Список существующих ID продуктов
+        var existingProductIds = new List<int> { 1, 2 };
 
-    //    // Добавление товаров в корзину пользователя
-    //    foreach (var productId in existingProductIds)
-    //    {
-    //        // Проверка, существует ли продукт в базе данных
-    //        var product = context.Products.Find(productId);
-    //        if (product == null)
-    //        {
-    //            Console.WriteLine($"Продукт с ID = {productId} не найден в базе данных.");
-    //            continue; // Пропускаем продукт, если он не найден
-    //        }
+        // Добавление товаров в корзину пользователя
+        foreach (var productId in existingProductIds)
+        {
+            // Проверка, существует ли продукт в базе данных
+            var product = context.Products.Find(productId);
+            if (product == null)
+            {
+                Console.WriteLine($"Продукт с ID = {productId} не найден в базе данных.");
+                continue; // Пропускаем продукт, если он не найден
+            }
 
-    //        var cartItem = new CartItem
-    //        {
-    //            UserId = user.Id,
-    //            ProductId = product.Id,
-    //            Quantity = 1, // Устанавливаем количество товара
-    //            User = user,
-    //            Product = product
-    //        };
+            var cartItem = new CartItem
+            {
+                UserId = user.Id,
+                ProductId = product.Id,
+                Quantity = 1, // Устанавливаем количество товара
+                User = user,
+                Product = product
+            };
 
-    //        user.CartItems.Add(cartItem);
-    //    }
+            user.CartItems.Add(cartItem);
+        }
 
-    //    context.SaveChanges();
-    //}
+        context.SaveChanges();
+    }
 
 
 

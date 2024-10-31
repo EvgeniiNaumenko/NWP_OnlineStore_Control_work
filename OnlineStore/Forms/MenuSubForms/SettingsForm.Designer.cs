@@ -37,7 +37,7 @@
             BackColor = Color.FromArgb(34, 33, 74);
             ClientSize = new Size(800, 450);
             Name = "SettingsForm";
-            Text = "SettingsForm";
+            Text = "Settings";
             ResumeLayout(false);
         }
 

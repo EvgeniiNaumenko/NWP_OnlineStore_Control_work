@@ -33,7 +33,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(419, 69);
+            button1.Location = new Point(573, 130);
             button1.Name = "button1";
             button1.Size = new Size(75, 23);
             button1.TabIndex = 0;
@@ -48,7 +48,7 @@
             ClientSize = new Size(800, 450);
             Controls.Add(button1);
             Name = "OrdersForm";
-            Text = "OrdersForm";
+            Text = "Orders";
             ResumeLayout(false);
         }
 

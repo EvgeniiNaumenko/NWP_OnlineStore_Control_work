@@ -1,4 +1,6 @@
 ﻿
+using OnlineStoreServer.Models.Cart;
+
 namespace OnlineStoreServer.Models
 {
     public class User
@@ -11,7 +13,8 @@ namespace OnlineStoreServer.Models
         public string Address { get; set; }
         public string PhoneNumber { get; set; }
         public ICollection<Product> Products { get; set; } = new List<Product>();
-        //public ICollection<CartItem> CartItems { get; set; } = new List<CartItem>();
+        public ICollection<CartItem> CartItems { get; set; } = new List<CartItem>();
+
     }
 
 }

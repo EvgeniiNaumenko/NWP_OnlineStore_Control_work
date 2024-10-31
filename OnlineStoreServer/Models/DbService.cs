@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using OnlineStoreServer.Models.Cart;
 using System.Runtime.CompilerServices;
 
 namespace OnlineStoreServer.Models
@@ -123,5 +124,71 @@ namespace OnlineStoreServer.Models
             await _context.SaveChangesAsync();
             return true; 
         }
+
+
+
+
+        // Cart methods
+
+        // Add
+        public async Task<bool> AddToCartAsync(int userId, int productId, int quantity)
+        {
+            var product = await _context.Products.FindAsync(productId);
+            if (product == null) return false;
+
+            var cartItem = await _context.CartItems
+                .FirstOrDefaultAsync(ci => ci.UserId == userId && ci.ProductId == productId);
+
+            if (cartItem != null)
+            {
+                cartItem.Quantity += quantity;
+            }
+            else
+            {
+                cartItem = new CartItem
+                {
+                    UserId = userId,
+                    ProductId = productId,
+                    Quantity = quantity
+                };
+                _context.CartItems.Add(cartItem);
+            }
+
+            await _context.SaveChangesAsync();
+            return true;
+        }
+
+        // Get List
+        public async Task<List<CartItem>> GetCartItemsAsync(int userId)
+        {
+            return await _context.CartItems
+                .Where(ci => ci.UserId == userId)
+                .Include(ci => ci.Product)
+                .ToListAsync();
+        }
+
+        // Remove Product From Cart
+        public async Task<bool> RemoveFromCartAsync(int userId, int productId)
+        {
+            var cartItem = await _context.CartItems
+                .FirstOrDefaultAsync(ci => ci.UserId == userId && ci.ProductId == productId);
+
+            if (cartItem == null)
+            {
+                return false;
+            }
+
+            _context.CartItems.Remove(cartItem);
+            await _context.SaveChangesAsync();
+            return true;
+        }
+
+
+
+
+
+
+
+
     }
 }

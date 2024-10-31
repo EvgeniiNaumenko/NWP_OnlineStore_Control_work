@@ -21,21 +21,27 @@ namespace OnlineStore.Forms.MenuSubForms
         public MySalesForm()
         {
             InitializeComponent();
-            _ = LoadProductsByUserIdAsync(1);
+            _ = LoadProductsByUserIdAsync(Global.userId);
         }
 
         private void AddProductButton_Click(object sender, EventArgs e)
         {
-            AddProductForm addProductForm = new AddProductForm(1); //исправить
+            AddProductForm addProductForm = new AddProductForm(Global.userId); //исправить // исправльно на globaluserId
             addProductForm.Show();
         }
 
+        //public async Task LoadProductsByUserIdAsync(int userId)
+        //{
+        //    var url = $"https://localhost:7284/products/user/{userId}";
+        //    using var client = new HttpClient();
+        //    myProducts = await client.GetFromJsonAsync<List<Product>>(url);
+        //}
         public async Task LoadProductsByUserIdAsync(int userId)
         {
-            var url = $"https://localhost:7284/products/user/{userId}";
-            using var client = new HttpClient();
-            myProducts = await client.GetFromJsonAsync<List<Product>>(url);
+            var url = $"{Global.serverUrl}products/user/{userId}";
+            myProducts = await Global.httpClient.GetFromJsonAsync<List<Product>>(url);
         }
+
 
         private async void CreateCards(List<Product> list)
         {
@@ -66,16 +72,15 @@ namespace OnlineStore.Forms.MenuSubForms
                 string imageUrl = list[i].imageUrl;
                 try
                 {
-                    using (var httpClient = new HttpClient())
-                    {
-                        var imageStream = await httpClient.GetStreamAsync(imageUrl);
-                        pictureBox.Image = Image.FromStream(imageStream);
-                    }
+                    var imageStream = await Global.httpClient.GetStreamAsync(imageUrl);
+                    pictureBox.Image = Image.FromStream(imageStream);
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show($"Ошибка загрузки изображения: {ex.Message}");
                 }
+
+
                 TextBox descriptionTextBox = new TextBox
                 {
                     Multiline = true,
@@ -177,15 +182,21 @@ namespace OnlineStore.Forms.MenuSubForms
             CreateCards(myProducts);
         }
 
+        //public async Task<bool> DeleteProductAsync(int productId)
+        //{
+        //    var url = $"https://localhost:7284/products/delete/{productId}";
+        //    using var client = new HttpClient();
+
+        //    var response = await client.DeleteAsync(url);
+        //    return response.IsSuccessStatusCode;
+        //}
         public async Task<bool> DeleteProductAsync(int productId)
         {
-            var url = $"https://localhost:7284/products/delete/{productId}";
-            using var client = new HttpClient();
+            var url = $"{Global.serverUrl}products/delete/{productId}";
 
-            var response = await client.DeleteAsync(url);
+            var response = await Global.httpClient.DeleteAsync(url);
             return response.IsSuccessStatusCode;
         }
-
 
 
 

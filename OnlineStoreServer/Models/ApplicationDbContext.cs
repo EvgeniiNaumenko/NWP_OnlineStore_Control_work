@@ -1,5 +1,6 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
+using OnlineStoreServer.Models.Cart;
 
 namespace OnlineStoreServer.Models
 {
@@ -7,6 +8,7 @@ namespace OnlineStoreServer.Models
     {
         public DbSet<User> Users { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<CartItem> CartItems { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options) { }
@@ -23,7 +25,18 @@ namespace OnlineStoreServer.Models
                 .HasForeignKey(p => p.UserId)
                 .OnDelete(DeleteBehavior.Cascade);
 
+            // Cart
+            modelBuilder.Entity<CartItem>()
+                .HasOne(e => e.User)
+                .WithMany(u => u.CartItems)
+                .HasForeignKey(e => e.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
 
+            modelBuilder.Entity<CartItem>()
+                .HasOne(e => e.Product)
+                .WithMany()
+                .HasForeignKey(e => e.ProductId)
+                .OnDelete(DeleteBehavior.Restrict);
 
 
             base.OnModelCreating(modelBuilder);

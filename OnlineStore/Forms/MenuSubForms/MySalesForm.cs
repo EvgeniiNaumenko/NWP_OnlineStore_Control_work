@@ -21,7 +21,7 @@ namespace OnlineStore.Forms.MenuSubForms
         public MySalesForm()
         {
             InitializeComponent();
-            _ = LoadProductsByUserIdAsync(1);
+            _ = LoadProductsByUserIdAsync(1); //исправить
         }
 
         private void AddProductButton_Click(object sender, EventArgs e)
@@ -43,7 +43,6 @@ namespace OnlineStore.Forms.MenuSubForms
 
             for (int i = 0; i < list.Count; i++)
             {
-                // Создаём панель для карточки
                 Panel cardPanel = new Panel
                 {
                     Size = new Size(300, 400),
@@ -54,7 +53,6 @@ namespace OnlineStore.Forms.MenuSubForms
                     Tag = i 
                 };
 
-                // Создаём PictureBox для изображения
                 PictureBox pictureBox = new PictureBox
                 {
                     SizeMode = PictureBoxSizeMode.StretchImage,
@@ -62,7 +60,6 @@ namespace OnlineStore.Forms.MenuSubForms
                     Dock = DockStyle.Top,
                 };
 
-                // Загрузка изображения из URL
                 string imageUrl = list[i].imageUrl;
                 try
                 {
@@ -116,21 +113,6 @@ namespace OnlineStore.Forms.MenuSubForms
                      AutoSize = true
 
                  };
-
-                // Создаём первую кнопку
-                //Button editBtn = new Button
-                //{
-                //    Text = "Редактировать",
-                //    Dock = DockStyle.Bottom,
-                //    Size = new Size(70, 30),
-                //    Margin = new Padding(5),
-                //    BackColor = Color.FromArgb(41, 128, 185),
-                //    FlatStyle = FlatStyle.Flat,
-                //    Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0),
-                //    ForeColor = Color.White,
-                //    Tag = i 
-                //};
-                // Создаём первую кнопку
                 Button deleteBtn = new Button
                 {
                     Text = "Удалить",
@@ -164,7 +146,6 @@ namespace OnlineStore.Forms.MenuSubForms
                 cardPanel.Controls.Add(nameLabel);
                 cardPanel.Controls.Add(pictureBox);
                 cardPanel.Controls.Add(priceLabel);
-                //cardPanel.Controls.Add(editBtn);
                 cardPanel.Controls.Add(deleteBtn);
 
                 MyProductsPanel.Controls.Add(cardPanel);
@@ -186,105 +167,6 @@ namespace OnlineStore.Forms.MenuSubForms
             return response.IsSuccessStatusCode;
         }
 
-
-
-
-        //private async void CreateCards(int numberOfCards)
-        //{
-        //    MyProductsPanel.Controls.Clear(); // Очищаем панель перед добавлением новых карточек
-
-        //    for (int i = 0; i < numberOfCards; i++)
-        //    {
-        //        // Создаём панель для карточки
-        //        Panel cardPanel = new Panel
-        //        {
-        //            Size = new Size(300,400),
-        //            BorderStyle = BorderStyle.FixedSingle,
-        //            BackColor = Color.MintCream,
-        //            Margin = new Padding(25),
-        //            Padding = new Padding(5),
-        //            Tag = i // Сохраняем номер карточки в Tag для идентификации
-        //        };
-
-        //        // Создаём PictureBox для изображения
-        //        PictureBox pictureBox = new PictureBox
-        //        {
-        //            SizeMode = PictureBoxSizeMode.StretchImage,
-        //            Height = cardPanel.Height/2,
-        //            Dock = DockStyle.Top,
-        //        };
-
-        //        // Загрузка изображения из URL
-        //        string imageUrl = "https://github.com/EvgeniiNaumenko/QuizChatBotImages/blob/main/images/cartoonQuiz/1.jpg?raw=true";
-        //        try
-        //        {
-        //            using (var httpClient = new HttpClient())
-        //            {
-        //                var imageStream = await httpClient.GetStreamAsync(imageUrl);
-        //                pictureBox.Image = Image.FromStream(imageStream);
-        //            }
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            MessageBox.Show($"Ошибка загрузки изображения: {ex.Message}");
-        //            // Вы можете установить изображение по умолчанию, если загрузка не удалась
-        //            pictureBox.Image = Image.FromFile("path_to_default_image.jpg"); // Укажите путь к изображению по умолчанию
-        //        }
-        //        TextBox descriptionTextBox = new TextBox
-        //        {
-        //            Multiline = true,
-        //            ScrollBars = ScrollBars.Vertical,
-        //            Text = $"Описание карто qqqqqqqqq qqqqqqqqqqq qqqqqqqqqqqqqqqqqqq qqqqq qqqqqqq qqqqqqq qqqqqqqqqqqqqqq qqqqqqqqqqqq qqqqqqqqqqqqqq qqqqqqqqqqq qqqqqqqqqqqqчки {i + 1}",
-        //            ReadOnly = true,
-        //            Dock = DockStyle.Fill,
-        //        };
-
-        //        Label priceLabel = new Label
-        //        {
-        //            Text = $"Price: {i}",
-        //            Dock = DockStyle.Bottom,
-        //            TextAlign = ContentAlignment.BottomLeft,
-        //            //Padding = new Padding(5),
-        //            AutoSize = true
-
-        //        };
-
-        //        // Создаём первую кнопку
-        //        Button button1 = new Button
-        //        {
-        //            Text = "Редактировать",
-        //            Dock = DockStyle.Bottom,
-        //            Size = new Size(70, 30),
-        //            Margin = new Padding(5),
-        //            BackColor = Color.FromArgb(41, 128, 185),
-        //            FlatStyle = FlatStyle.Flat,
-        //            Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0),
-        //            ForeColor = Color.White,
-        //            Tag = i // Сохраняем номер карточки в Tag для идентификации
-        //        };
-        //        // Создаём первую кнопку
-        //        Button button2 = new Button
-        //        {
-        //            Text = "Удалить",
-        //            Dock = DockStyle.Bottom,
-        //            Size = new Size(70, 30),
-        //            Margin = new Padding(5),
-        //            BackColor = Color.FromArgb(41, 128, 185),
-        //            FlatStyle = FlatStyle.Flat,
-        //            Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0),
-        //            ForeColor = Color.White,
-        //            Tag = i // Сохраняем номер карточки в Tag для идентификации
-        //        };
-        //        // Добавляем элементы в панель карточки
-        //        cardPanel.Controls.Add(descriptionTextBox);
-        //        cardPanel.Controls.Add(pictureBox);
-        //        cardPanel.Controls.Add(priceLabel);
-        //        cardPanel.Controls.Add(button1); // Внизу над второй кнопкой
-        //        cardPanel.Controls.Add(button2); // Внизу над второй кнопкой
-        //        // Добавляем карточку в основную панель
-        //        MyProductsPanel.Controls.Add(cardPanel);
-        //    }
-        //}
     }
 }
 

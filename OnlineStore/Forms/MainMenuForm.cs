@@ -123,13 +123,13 @@ namespace OnlineStore.Forms
         private void MySalesBtn_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color2);
-            OpenChildForm(new ProductsForm());
+           OpenChildForm(new MySalesForm());
         }
 
         private void OrdersBtn_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color3);
-            OpenChildForm(new MySalesForm());
+            OpenChildForm(new CustomerForm());
         }
 
         private void Customer_Click(object sender, EventArgs e)

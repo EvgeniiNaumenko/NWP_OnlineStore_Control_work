@@ -16,18 +16,18 @@ class Program
 
         builder.Services.AddScoped<DbService>();
 
+
         var app = builder.Build();
+        app.UseStaticFiles();
 
-        // Создание Бд если ее нету
-        using (var scope = app.Services.CreateScope())
-        {
-            var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-            dbContext.Database.EnsureDeleted();
-            dbContext.Database.EnsureCreated();
 
-            // Заполнение тестовыми данными
-            //SeedDatabase(dbContext);
-        }
+        //using (var scope = app.Services.CreateScope())
+        //{
+        //    var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+        //    dbContext.Database.EnsureDeleted();
+        //    dbContext.Database.EnsureCreated();
+
+        //}
 
         app.MapGet("/", () => "Hello World!");
 
@@ -55,11 +55,26 @@ class Program
         app.MapPost("/products/add", async (ProductRequest productRequest, DbService dbService) =>
         {
             bool success = await dbService.AddProductAsync(productRequest);
-            return Results.Json(new { added = success });
+            if (success)
+            {
+                return Results.Json(new { added = true });
+            }
+            return Results.Json(new { addes = false });
         });
 
+        // 4) get products by UserId
+        app.MapGet("/products/user/{userId}", async (int userId, DbService dbService) =>
+        {
+            var products = await dbService.GetProductsByUserIdAsync(userId);
+            return Results.Json(products);
+        });
 
-
+        //5) удалить продукт по id
+        app.MapDelete("/products/delete/{id:int}", async (int id, DbService dbService) =>
+        {
+            bool deleted = await dbService.DeleteProductAsync(id);
+            return deleted ? Results.Ok(new { deleted = true }) : Results.NotFound(new { deleted = false });
+        });
 
 
         app.Run();

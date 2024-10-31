@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System.Runtime.CompilerServices;
 
 namespace OnlineStoreServer.Models
 {
@@ -49,21 +50,8 @@ namespace OnlineStoreServer.Models
         //3) добавление продукта
         public async Task<bool> AddProductAsync(ProductRequest productRequest)
         {
-
             var user = await _context.Users.FindAsync(productRequest.UserId);
             if (user == null) return false;
-
-
-            var product = new Product
-            {
-                Name = productRequest.Name,
-                Category = productRequest.Category,
-                Price = productRequest.Price,
-                Description = productRequest.Description,
-                UserId = productRequest.UserId,
-                User = user
-            };
-
 
             string userDirectory = Path.Combine("wwwroot", "images", "users", user.Id.ToString());
 
@@ -72,121 +60,68 @@ namespace OnlineStoreServer.Models
                 Directory.CreateDirectory(userDirectory);
             }
 
-            foreach (var imageBytes in productRequest.Images)
+            var imageBytes = productRequest.Image;
+            string fileName = $"{Guid.NewGuid()}.jpg";
+            string filePath = Path.Combine(userDirectory, fileName);
+
+            await File.WriteAllBytesAsync(filePath, imageBytes);
+
+            // Относительный URL к картинке для клиента
+            string relativeImageUrl = Path.Combine("images", "users", user.Id.ToString(), fileName);
+            string imageUrl = new Uri(new Uri("https://localhost:7284/"), relativeImageUrl).ToString();
+            Console.WriteLine($"Image URL: {imageUrl}");
+            var product = new Product
             {
-
-                string fileName = $"{Guid.NewGuid()}.jpg";
-                string filePath = Path.Combine(userDirectory, fileName);
-
-                await File.WriteAllBytesAsync(filePath, imageBytes);
-
-                var productImage = new ProductImage
-                {
-                    ImagePath = filePath, 
-                    Product = product
-                };
-                product.Images.Add(productImage);
-            }
+                Name = productRequest.Name,
+                Category = productRequest.Category,
+                Price = productRequest.Price,
+                Description = productRequest.Description,
+                UserId = productRequest.UserId,
+                ImageUrl = imageUrl,
+                User = user
+            };
 
             _context.Products.Add(product);
             await _context.SaveChangesAsync();
             return true;
         }
 
-
-
-
-
-
-
-
-
-
-
-        public async Task<Product> GetProductByIdAsync(int productId)
+        //4) все продукты по юзеру
+        public async Task<List<Product>> GetProductsByUserIdAsync(int userId)
         {
             return await _context.Products
-                .Include(p => p.Description) 
-                .Include(p => p.Images) 
-                .FirstOrDefaultAsync(p => p.Id == productId);
-        }
-
-        public async Task<List<Product>> GetAllProductsAsync()
-        {
-            return await _context.Products
-                .Include(p => p.Description)
-                .Include(p => p.Images)
-                .ToListAsync();
-        }
-
-        public async Task<List<Product>> GetProductsByCategoryAsync(string category)
-        {
-            return await _context.Products
-                .Include(p => p.Description)
-                .Include(p => p.Images)
-                .Where(p => p.Category == category)
-                .ToListAsync();
-        }
-
-        public async Task<List<Product>> GetProductsSortedByPriceAscendingAsync()
-        {
-            return await _context.Products
-                .Include(p => p.Description)
-                .Include(p => p.Images)
-                .OrderBy(p => p.Price)
-                .ToListAsync();
-        }
-
-        public async Task<List<Product>> GetProductsSortedByPriceDescendingAsync()
-        {
-            return await _context.Products
-                .Include(p => p.Description)
-                .Include(p => p.Images)
-                .OrderByDescending(p => p.Price)
-                .ToListAsync();
-        }
-
-        public async Task<List<Product>> SearchProductsByNameAsync(string namePart)
-        {
-            return await _context.Products
-                .Include(p => p.Description)
-                .Include(p => p.Images)
-                .Where(p => p.Name.Contains(namePart))
-                .ToListAsync();
-        }
-
-        public async Task<List<Product>> GetProductsByUserAsync(int userId)
-        {
-            return await _context.Products
-                .Include(p => p.Description)
-                .Include(p => p.Images)
                 .Where(p => p.UserId == userId)
                 .ToListAsync();
         }
-        public async Task AddProductAsync(int userId, Product product)
+        //5) удалить продукт по ID
+        public async Task<bool> DeleteProductAsync(int productId)
         {
-
-            var user = await _context.Users.FindAsync(userId);
-            if (user == null)
+            var product = await _context.Products.FindAsync(productId);
+            if (product == null)
             {
-                throw new Exception("Пользователь не найден.");
+                return false;
+            }
+            if (!string.IsNullOrEmpty(product.ImageUrl))
+            {
+                string relativeImageUrl = product.ImageUrl.Replace("https://localhost:7284/", "");
+                string fullPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", relativeImageUrl);
+
+                try
+                {
+                    if (File.Exists(fullPath))
+                    {
+                        File.Delete(fullPath);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Ошибка при удалении файла: {ex.Message}");
+                }
             }
 
-            product.UserId = userId;
-
-            await _context.Products.AddAsync(product);
+            _context.Products.Remove(product);
             await _context.SaveChangesAsync();
+            return true; 
         }
-        public async Task<User> GetUserByIdAsync(int userId)
-        {
-            return await _context.Users
-                .Include(u => u.Products)
-                    .ThenInclude(p => p.Description)
-                .Include(u => u.Products)
-                    .ThenInclude(p => p.Images)
-                .FirstOrDefaultAsync(u => u.Id == userId);
-        }
-
     }
-
 }

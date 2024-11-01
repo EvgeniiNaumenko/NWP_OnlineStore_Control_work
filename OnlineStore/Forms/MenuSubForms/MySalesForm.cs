@@ -26,23 +26,16 @@ namespace OnlineStore.Forms.MenuSubForms
 
         private void AddProductButton_Click(object sender, EventArgs e)
         {
-            AddProductForm addProductForm = new AddProductForm(Global.userId); //исправить // исправльно на globaluserId
+            AddProductForm addProductForm = new AddProductForm(Global.userId);
             addProductForm.Show();
         }
 
-        //public async Task LoadProductsByUserIdAsync(int userId)
-        //{
-        //    var url = $"https://localhost:7284/products/user/{userId}";
-        //    using var client = new HttpClient();
-        //    myProducts = await client.GetFromJsonAsync<List<Product>>(url);
-        //}
         public async Task LoadProductsByUserIdAsync(int userId)
         {
             var url = $"{Global.serverUrl}products/user/{userId}";
             myProducts = await Global.httpClient.GetFromJsonAsync<List<Product>>(url);
             CreateCards(myProducts);
         }
-
 
         private async void CreateCards(List<Product> list)
         {
@@ -164,14 +157,6 @@ namespace OnlineStore.Forms.MenuSubForms
             CreateCards(myProducts);
         }
 
-        //public async Task<bool> DeleteProductAsync(int productId)
-        //{
-        //    var url = $"https://localhost:7284/products/delete/{productId}";
-        //    using var client = new HttpClient();
-
-        //    var response = await client.DeleteAsync(url);
-        //    return response.IsSuccessStatusCode;
-        //}
         public async Task<bool> DeleteProductAsync(int productId)
         {
             var url = $"{Global.serverUrl}products/delete/{productId}";
@@ -179,105 +164,6 @@ namespace OnlineStore.Forms.MenuSubForms
             var response = await Global.httpClient.DeleteAsync(url);
             return response.IsSuccessStatusCode;
         }
-
-
-
-        //private async void CreateCards(int numberOfCards)
-        //{
-        //    MyProductsPanel.Controls.Clear(); // Очищаем панель перед добавлением новых карточек
-
-        //    for (int i = 0; i < numberOfCards; i++)
-        //    {
-        //        // Создаём панель для карточки
-        //        Panel cardPanel = new Panel
-        //        {
-        //            Size = new Size(300,400),
-        //            BorderStyle = BorderStyle.FixedSingle,
-        //            BackColor = Color.MintCream,
-        //            Margin = new Padding(25),
-        //            Padding = new Padding(5),
-        //            Tag = i // Сохраняем номер карточки в Tag для идентификации
-        //        };
-
-        //        // Создаём PictureBox для изображения
-        //        PictureBox pictureBox = new PictureBox
-        //        {
-        //            SizeMode = PictureBoxSizeMode.StretchImage,
-        //            Height = cardPanel.Height/2,
-        //            Dock = DockStyle.Top,
-        //        };
-
-        //        // Загрузка изображения из URL
-        //        string imageUrl = "https://github.com/EvgeniiNaumenko/QuizChatBotImages/blob/main/images/cartoonQuiz/1.jpg?raw=true";
-        //        try
-        //        {
-        //            using (var httpClient = new HttpClient())
-        //            {
-        //                var imageStream = await httpClient.GetStreamAsync(imageUrl);
-        //                pictureBox.Image = Image.FromStream(imageStream);
-        //            }
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            MessageBox.Show($"Ошибка загрузки изображения: {ex.Message}");
-        //            // Вы можете установить изображение по умолчанию, если загрузка не удалась
-        //            pictureBox.Image = Image.FromFile("path_to_default_image.jpg"); // Укажите путь к изображению по умолчанию
-        //        }
-        //        TextBox descriptionTextBox = new TextBox
-        //        {
-        //            Multiline = true,
-        //            ScrollBars = ScrollBars.Vertical,
-        //            Text = $"Описание карто qqqqqqqqq qqqqqqqqqqq qqqqqqqqqqqqqqqqqqq qqqqq qqqqqqq qqqqqqq qqqqqqqqqqqqqqq qqqqqqqqqqqq qqqqqqqqqqqqqq qqqqqqqqqqq qqqqqqqqqqqqчки {i + 1}",
-        //            ReadOnly = true,
-        //            Dock = DockStyle.Fill,
-        //        };
-
-        //        Label priceLabel = new Label
-        //        {
-        //            Text = $"Price: {i}",
-        //            Dock = DockStyle.Bottom,
-        //            TextAlign = ContentAlignment.BottomLeft,
-        //            //Padding = new Padding(5),
-        //            AutoSize = true
-
-        //        };
-
-        //        // Создаём первую кнопку
-        //        Button button1 = new Button
-        //        {
-        //            Text = "Редактировать",
-        //            Dock = DockStyle.Bottom,
-        //            Size = new Size(70, 30),
-        //            Margin = new Padding(5),
-        //            BackColor = Color.FromArgb(41, 128, 185),
-        //            FlatStyle = FlatStyle.Flat,
-        //            Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0),
-        //            ForeColor = Color.White,
-        //            Tag = i // Сохраняем номер карточки в Tag для идентификации
-        //        };
-        //        // Создаём первую кнопку
-        //        Button button2 = new Button
-        //        {
-        //            Text = "Удалить",
-        //            Dock = DockStyle.Bottom,
-        //            Size = new Size(70, 30),
-        //            Margin = new Padding(5),
-        //            BackColor = Color.FromArgb(41, 128, 185),
-        //            FlatStyle = FlatStyle.Flat,
-        //            Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0),
-        //            ForeColor = Color.White,
-        //            Tag = i // Сохраняем номер карточки в Tag для идентификации
-        //        };
-        //        // Добавляем элементы в панель карточки
-        //        cardPanel.Controls.Add(descriptionTextBox);
-        //        cardPanel.Controls.Add(pictureBox);
-        //        cardPanel.Controls.Add(priceLabel);
-        //        cardPanel.Controls.Add(button1); // Внизу над второй кнопкой
-        //        cardPanel.Controls.Add(button2); // Внизу над второй кнопкой
-        //        // Добавляем карточку в основную панель
-        //        MyProductsPanel.Controls.Add(cardPanel);
-        //    }
-        //}
     }
 }
 

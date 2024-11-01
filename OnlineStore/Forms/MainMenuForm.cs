@@ -129,7 +129,7 @@ namespace OnlineStore.Forms
         private void OrdersBtn_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color3);
-            OpenChildForm(new CustomerForm());
+            OpenChildForm(new OrdersForm());
         }
 
         private void Customer_Click(object sender, EventArgs e)

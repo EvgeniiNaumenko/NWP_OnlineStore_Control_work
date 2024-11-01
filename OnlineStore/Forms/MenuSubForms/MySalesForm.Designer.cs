@@ -44,12 +44,11 @@
             AddProductButton.IconColor = Color.Gainsboro;
             AddProductButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
             AddProductButton.IconSize = 40;
-            AddProductButton.ImageAlign = ContentAlignment.TopCenter;
             AddProductButton.Location = new Point(0, 0);
-            AddProductButton.Margin = new Padding(10);
+            AddProductButton.Margin = new Padding(9, 8, 9, 8);
             AddProductButton.Name = "AddProductButton";
-            AddProductButton.Padding = new Padding(5);
-            AddProductButton.Size = new Size(629, 50);
+            AddProductButton.Padding = new Padding(4, 4, 4, 4);
+            AddProductButton.Size = new Size(550, 38);
             AddProductButton.TabIndex = 0;
             AddProductButton.UseVisualStyleBackColor = false;
             AddProductButton.Click += AddProductButton_Click;
@@ -58,10 +57,11 @@
             // 
             MyProductsPanel.AutoScroll = true;
             MyProductsPanel.Dock = DockStyle.Fill;
-            MyProductsPanel.Location = new Point(0, 50);
+            MyProductsPanel.Location = new Point(0, 38);
+            MyProductsPanel.Margin = new Padding(3, 2, 3, 2);
             MyProductsPanel.Name = "MyProductsPanel";
-            MyProductsPanel.Padding = new Padding(10);
-            MyProductsPanel.Size = new Size(629, 353);
+            MyProductsPanel.Padding = new Padding(9, 8, 9, 8);
+            MyProductsPanel.Size = new Size(550, 264);
             MyProductsPanel.TabIndex = 1;
             // 
             // UpdateBtn
@@ -74,23 +74,24 @@
             UpdateBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             UpdateBtn.IconSize = 40;
             UpdateBtn.Location = new Point(0, 0);
-            UpdateBtn.Margin = new Padding(10);
+            UpdateBtn.Margin = new Padding(9, 8, 9, 8);
             UpdateBtn.Name = "UpdateBtn";
-            UpdateBtn.Padding = new Padding(5, 10, 5, 5);
-            UpdateBtn.Size = new Size(55, 50);
+            UpdateBtn.Padding = new Padding(4, 8, 4, 4);
+            UpdateBtn.Size = new Size(38, 38);
             UpdateBtn.TabIndex = 0;
             UpdateBtn.UseVisualStyleBackColor = false;
             UpdateBtn.Click += UpdateBtn_Click;
             // 
             // MySalesForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(34, 33, 74);
-            ClientSize = new Size(629, 403);
+            ClientSize = new Size(550, 302);
             Controls.Add(UpdateBtn);
             Controls.Add(MyProductsPanel);
             Controls.Add(AddProductButton);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "MySalesForm";
             Text = "MySales";
             ResumeLayout(false);

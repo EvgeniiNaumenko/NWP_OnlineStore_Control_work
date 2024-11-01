@@ -31,19 +31,6 @@ namespace OnlineStore.Forms.MenuSubForms
             InitializeSearchPanel();
         }
 
-
-        //var filterRequest = new ProductFilterRequest
-        //{
-        //    Name = nameInput.Text,
-        //    Category = categoryInput.Text,
-        //    MinPrice = string.IsNullOrEmpty(minPriceInput.Text) ? (decimal?)null : decimal.Parse(minPriceInput.Text),
-        //    MaxPrice = string.IsNullOrEmpty(maxPriceInput.Text) ? (decimal?)null : decimal.Parse(maxPriceInput.Text),
-        //    Page = currentPage // Текущая страница
-        //};
-
-        //var response = await httpClient.PostAsJsonAsync("https://localhost:7284/products/filter", filterRequest);
-        //var products = await response.Content.ReadFromJsonAsync<List<Product>>();
-
         private void InitializeSearchPanel()
         {
             TableLayoutPanel tableLayoutPanel = new TableLayoutPanel
@@ -197,7 +184,6 @@ namespace OnlineStore.Forms.MenuSubForms
 
             for (int i = 0; i < list.Count; i++)
             {
-                MessageBox.Show($"Создание карточки для продукта: {list[i].Name}");
                 Panel cardPanel = new Panel
                 {
                     Size = new Size(300, 400),

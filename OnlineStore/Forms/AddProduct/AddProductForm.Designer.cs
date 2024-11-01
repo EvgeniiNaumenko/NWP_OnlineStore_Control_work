@@ -214,6 +214,7 @@
             Controls.Add(NameTextBox);
             Controls.Add(label2);
             Controls.Add(label1);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "AddProductForm";
             Text = "AddProductForm";
             ResumeLayout(false);

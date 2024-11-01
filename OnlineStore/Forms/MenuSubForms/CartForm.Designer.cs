@@ -4,7 +4,6 @@
     {
         private System.ComponentModel.IContainer components = null;
         private System.Windows.Forms.FlowLayoutPanel MyCartPanel;
-        private System.Windows.Forms.Label titleLabel;
 
         protected override void Dispose(bool disposing)
         {
@@ -20,7 +19,6 @@
         private void InitializeComponent()
         {
             MyCartPanel = new FlowLayoutPanel();
-            titleLabel = new Label();
             totalPriceLabel = new Label();
             SuspendLayout();
             // 
@@ -28,23 +26,11 @@
             // 
             MyCartPanel.AutoScroll = true;
             MyCartPanel.Dock = DockStyle.Fill;
-            MyCartPanel.Location = new Point(0, 38);
+            MyCartPanel.Location = new Point(0, 0);
             MyCartPanel.Name = "MyCartPanel";
             MyCartPanel.Padding = new Padding(10);
-            MyCartPanel.Size = new Size(700, 432);
+            MyCartPanel.Size = new Size(700, 470);
             MyCartPanel.TabIndex = 0;
-            // 
-            // titleLabel
-            // 
-            titleLabel.Dock = DockStyle.Top;
-            titleLabel.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            titleLabel.ForeColor = SystemColors.Control;
-            titleLabel.Location = new Point(0, 0);
-            titleLabel.Name = "titleLabel";
-            titleLabel.Size = new Size(700, 38);
-            titleLabel.TabIndex = 1;
-            titleLabel.Text = "My Cart";
-            titleLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // totalPriceLabel
             // 
@@ -66,7 +52,6 @@
             ClientSize = new Size(700, 500);
             Controls.Add(MyCartPanel);
             Controls.Add(totalPriceLabel);
-            Controls.Add(titleLabel);
             Name = "CartForm";
             Text = "Cart";
             ResumeLayout(false);

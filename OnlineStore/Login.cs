@@ -4,7 +4,6 @@ using OnlineStore.Forms.Register;
 using System.Text.Json;
 using System.Text;
 using OnlineStore.Models;
-using OnlineStore.Forms.UserInterface;
 using OnlineStore.Forms;
 using System.Net.Http.Json;
 using OnlineStore.Forms.MenuSubForms;
@@ -17,6 +16,7 @@ namespace OnlineStore
         public Login()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void CloseBtn_Click(object sender, EventArgs e)
@@ -119,31 +119,6 @@ namespace OnlineStore
 
         private void button2_Click(object sender, EventArgs e)
         {
-
-            UserInterfaceForm userInterForm = new UserInterfaceForm(this);
-            userInterForm.Show();
-
-
-            //MainMenuForm menuForm = new MainMenuForm();
-            //menuForm.Show();
-            this.Hide();
-
-
-
-            //using (OpenFileDialog openFileDialog = new OpenFileDialog())
-            //{
-            //    // Устанавливаем фильтр для выбора только изображений
-            //    openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp;*.gif";
-            //    openFileDialog.Title = "Выберите изображение";
-
-            //    // Проверяем, выбрал ли пользователь файл
-            //    if (openFileDialog.ShowDialog() == DialogResult.OK)
-            //    {
-            //        // Отображаем выбранное изображение в PictureBox
-            //        //pictureBox1.Image = Image.FromFile(openFileDialog.FileName);
-            //        MessageBox.Show("good");
-            //    }
-            //}
 
         }
     }

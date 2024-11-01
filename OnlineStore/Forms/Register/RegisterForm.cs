@@ -9,7 +9,6 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using OnlineStore.Forms.UserInterface;
 using OnlineStore.Models;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
@@ -22,6 +21,7 @@ namespace OnlineStore.Forms.Register
         public RegisterForm(Login loginForm)
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
             _loginForm = loginForm;
         }
 

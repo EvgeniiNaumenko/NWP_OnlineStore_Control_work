@@ -120,12 +120,12 @@ namespace OnlineStore
         private void button2_Click(object sender, EventArgs e)
         {
 
-            UserInterfaceForm userInterForm = new UserInterfaceForm(this);
-            userInterForm.Show();
+            //UserInterfaceForm userInterForm = new UserInterfaceForm(this);
+            //userInterForm.Show();
 
 
-            //MainMenuForm menuForm = new MainMenuForm();
-            //menuForm.Show();
+            MainMenuForm menuForm = new MainMenuForm();
+            menuForm.Show();
             this.Hide();
 
 

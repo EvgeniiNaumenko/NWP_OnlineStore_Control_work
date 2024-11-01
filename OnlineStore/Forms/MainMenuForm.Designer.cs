@@ -71,9 +71,8 @@ namespace OnlineStore.Forms
             MenuPanel.Controls.Add(LogoPanel);
             MenuPanel.Dock = DockStyle.Left;
             MenuPanel.Location = new Point(0, 0);
-            MenuPanel.Margin = new Padding(3, 4, 3, 4);
             MenuPanel.Name = "MenuPanel";
-            MenuPanel.Size = new Size(251, 771);
+            MenuPanel.Size = new Size(220, 611);
             MenuPanel.TabIndex = 0;
             // 
             // LogoutBtn
@@ -89,10 +88,10 @@ namespace OnlineStore.Forms
             LogoutBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             LogoutBtn.IconSize = 25;
             LogoutBtn.ImageAlign = ContentAlignment.MiddleLeft;
-            LogoutBtn.Location = new Point(0, 738);
+            LogoutBtn.Location = new Point(0, 586);
             LogoutBtn.Margin = new Padding(0);
             LogoutBtn.Name = "LogoutBtn";
-            LogoutBtn.Size = new Size(251, 33);
+            LogoutBtn.Size = new Size(220, 25);
             LogoutBtn.TabIndex = 8;
             LogoutBtn.Text = "Logout";
             LogoutBtn.UseVisualStyleBackColor = false;
@@ -110,11 +109,10 @@ namespace OnlineStore.Forms
             SettingsBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             SettingsBtn.IconSize = 32;
             SettingsBtn.ImageAlign = ContentAlignment.MiddleLeft;
-            SettingsBtn.Location = new Point(0, 587);
-            SettingsBtn.Margin = new Padding(3, 4, 3, 4);
+            SettingsBtn.Location = new Point(0, 440);
             SettingsBtn.Name = "SettingsBtn";
-            SettingsBtn.Padding = new Padding(11, 0, 23, 0);
-            SettingsBtn.Size = new Size(251, 80);
+            SettingsBtn.Padding = new Padding(10, 0, 20, 0);
+            SettingsBtn.Size = new Size(220, 60);
             SettingsBtn.TabIndex = 7;
             SettingsBtn.Text = "Settings";
             SettingsBtn.TextAlign = ContentAlignment.MiddleLeft;
@@ -134,11 +132,10 @@ namespace OnlineStore.Forms
             CartBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             CartBtn.IconSize = 32;
             CartBtn.ImageAlign = ContentAlignment.MiddleLeft;
-            CartBtn.Location = new Point(0, 507);
-            CartBtn.Margin = new Padding(3, 4, 3, 4);
+            CartBtn.Location = new Point(0, 380);
             CartBtn.Name = "CartBtn";
-            CartBtn.Padding = new Padding(11, 0, 23, 0);
-            CartBtn.Size = new Size(251, 80);
+            CartBtn.Padding = new Padding(10, 0, 20, 0);
+            CartBtn.Size = new Size(220, 60);
             CartBtn.TabIndex = 6;
             CartBtn.Text = "Cart";
             CartBtn.TextAlign = ContentAlignment.MiddleLeft;
@@ -158,11 +155,10 @@ namespace OnlineStore.Forms
             Customer.IconFont = FontAwesome.Sharp.IconFont.Auto;
             Customer.IconSize = 32;
             Customer.ImageAlign = ContentAlignment.MiddleLeft;
-            Customer.Location = new Point(0, 427);
-            Customer.Margin = new Padding(3, 4, 3, 4);
+            Customer.Location = new Point(0, 320);
             Customer.Name = "Customer";
-            Customer.Padding = new Padding(11, 0, 23, 0);
-            Customer.Size = new Size(251, 80);
+            Customer.Padding = new Padding(10, 0, 20, 0);
+            Customer.Size = new Size(220, 60);
             Customer.TabIndex = 5;
             Customer.Text = "Customer";
             Customer.TextAlign = ContentAlignment.MiddleLeft;
@@ -182,11 +178,10 @@ namespace OnlineStore.Forms
             OrdersBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             OrdersBtn.IconSize = 32;
             OrdersBtn.ImageAlign = ContentAlignment.MiddleLeft;
-            OrdersBtn.Location = new Point(0, 347);
-            OrdersBtn.Margin = new Padding(3, 4, 3, 4);
+            OrdersBtn.Location = new Point(0, 260);
             OrdersBtn.Name = "OrdersBtn";
-            OrdersBtn.Padding = new Padding(11, 0, 23, 0);
-            OrdersBtn.Size = new Size(251, 80);
+            OrdersBtn.Padding = new Padding(10, 0, 20, 0);
+            OrdersBtn.Size = new Size(220, 60);
             OrdersBtn.TabIndex = 4;
             OrdersBtn.Text = "Orders";
             OrdersBtn.TextAlign = ContentAlignment.MiddleLeft;
@@ -206,11 +201,10 @@ namespace OnlineStore.Forms
             MySalesBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             MySalesBtn.IconSize = 32;
             MySalesBtn.ImageAlign = ContentAlignment.MiddleLeft;
-            MySalesBtn.Location = new Point(0, 267);
-            MySalesBtn.Margin = new Padding(3, 4, 3, 4);
+            MySalesBtn.Location = new Point(0, 200);
             MySalesBtn.Name = "MySalesBtn";
-            MySalesBtn.Padding = new Padding(11, 0, 23, 0);
-            MySalesBtn.Size = new Size(251, 80);
+            MySalesBtn.Padding = new Padding(10, 0, 20, 0);
+            MySalesBtn.Size = new Size(220, 60);
             MySalesBtn.TabIndex = 3;
             MySalesBtn.Text = "My Sales";
             MySalesBtn.TextAlign = ContentAlignment.MiddleLeft;
@@ -230,11 +224,10 @@ namespace OnlineStore.Forms
             DashboardBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             DashboardBtn.IconSize = 32;
             DashboardBtn.ImageAlign = ContentAlignment.MiddleLeft;
-            DashboardBtn.Location = new Point(0, 187);
-            DashboardBtn.Margin = new Padding(3, 4, 3, 4);
+            DashboardBtn.Location = new Point(0, 140);
             DashboardBtn.Name = "DashboardBtn";
-            DashboardBtn.Padding = new Padding(11, 0, 23, 0);
-            DashboardBtn.Size = new Size(251, 80);
+            DashboardBtn.Padding = new Padding(10, 0, 20, 0);
+            DashboardBtn.Size = new Size(220, 60);
             DashboardBtn.TabIndex = 2;
             DashboardBtn.Text = "Dashboard";
             DashboardBtn.TextAlign = ContentAlignment.MiddleLeft;
@@ -247,19 +240,17 @@ namespace OnlineStore.Forms
             LogoPanel.Controls.Add(LogoHomeBtn);
             LogoPanel.Dock = DockStyle.Top;
             LogoPanel.Location = new Point(0, 0);
-            LogoPanel.Margin = new Padding(3, 4, 3, 4);
             LogoPanel.Name = "LogoPanel";
-            LogoPanel.Padding = new Padding(11, 0, 23, 0);
-            LogoPanel.Size = new Size(251, 187);
+            LogoPanel.Padding = new Padding(10, 0, 20, 0);
+            LogoPanel.Size = new Size(220, 140);
             LogoPanel.TabIndex = 1;
             // 
             // LogoHomeBtn
             // 
             LogoHomeBtn.Image = Properties.Resources._5277c7140df989d54ebf3ea637037add;
-            LogoHomeBtn.Location = new Point(19, 15);
-            LogoHomeBtn.Margin = new Padding(3, 4, 3, 4);
+            LogoHomeBtn.Location = new Point(17, 11);
             LogoHomeBtn.Name = "LogoHomeBtn";
-            LogoHomeBtn.Size = new Size(208, 164);
+            LogoHomeBtn.Size = new Size(182, 123);
             LogoHomeBtn.SizeMode = PictureBoxSizeMode.CenterImage;
             LogoHomeBtn.TabIndex = 0;
             LogoHomeBtn.TabStop = false;
@@ -274,10 +265,9 @@ namespace OnlineStore.Forms
             TitleBarPanel.Controls.Add(TitleOfChildFormLabel);
             TitleBarPanel.Controls.Add(CurrentChildFormIconPicBox);
             TitleBarPanel.Dock = DockStyle.Top;
-            TitleBarPanel.Location = new Point(251, 0);
-            TitleBarPanel.Margin = new Padding(3, 4, 3, 4);
+            TitleBarPanel.Location = new Point(220, 0);
             TitleBarPanel.Name = "TitleBarPanel";
-            TitleBarPanel.Size = new Size(1115, 100);
+            TitleBarPanel.Size = new Size(821, 75);
             TitleBarPanel.TabIndex = 1;
             TitleBarPanel.MouseDown += TitleBarPanel_MouseDown;
             // 
@@ -290,10 +280,10 @@ namespace OnlineStore.Forms
             CloseBtn.IconColor = Color.Silver;
             CloseBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             CloseBtn.IconSize = 25;
-            CloseBtn.Location = new Point(1084, 4);
             CloseBtn.Margin = new Padding(3, 4, 3, 4);
+            CloseBtn.Location = new Point(793, 3);
             CloseBtn.Name = "CloseBtn";
-            CloseBtn.Size = new Size(23, 27);
+            CloseBtn.Size = new Size(20, 20);
             CloseBtn.TabIndex = 4;
             CloseBtn.UseVisualStyleBackColor = true;
             CloseBtn.Click += CloseBtn_Click_1;
@@ -307,10 +297,10 @@ namespace OnlineStore.Forms
             MinimizeBtn.IconColor = Color.Silver;
             MinimizeBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             MinimizeBtn.IconSize = 25;
-            MinimizeBtn.Location = new Point(1015, 4);
             MinimizeBtn.Margin = new Padding(3, 4, 3, 4);
+            MinimizeBtn.Location = new Point(733, 3);
             MinimizeBtn.Name = "MinimizeBtn";
-            MinimizeBtn.Size = new Size(21, 24);
+            MinimizeBtn.Size = new Size(18, 18);
             MinimizeBtn.TabIndex = 4;
             MinimizeBtn.UseVisualStyleBackColor = true;
             MinimizeBtn.Click += MinimizeBtn_Click_1;
@@ -324,10 +314,10 @@ namespace OnlineStore.Forms
             MaximizeBtn.IconColor = Color.Silver;
             MaximizeBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             MaximizeBtn.IconSize = 25;
-            MaximizeBtn.Location = new Point(1052, 5);
             MaximizeBtn.Margin = new Padding(3, 4, 3, 4);
+            MaximizeBtn.Location = new Point(765, 4);
             MaximizeBtn.Name = "MaximizeBtn";
-            MaximizeBtn.Size = new Size(21, 24);
+            MaximizeBtn.Size = new Size(18, 18);
             MaximizeBtn.TabIndex = 4;
             MaximizeBtn.UseVisualStyleBackColor = true;
             MaximizeBtn.Click += MaximizeBtn_Click_1;
@@ -337,9 +327,9 @@ namespace OnlineStore.Forms
             TitleOfChildFormLabel.AutoSize = true;
             TitleOfChildFormLabel.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
             TitleOfChildFormLabel.ForeColor = Color.Gainsboro;
-            TitleOfChildFormLabel.Location = new Point(65, 40);
+            TitleOfChildFormLabel.Location = new Point(57, 30);
             TitleOfChildFormLabel.Name = "TitleOfChildFormLabel";
-            TitleOfChildFormLabel.Size = new Size(59, 21);
+            TitleOfChildFormLabel.Size = new Size(47, 17);
             TitleOfChildFormLabel.TabIndex = 1;
             TitleOfChildFormLabel.Text = "Home";
             // 
@@ -350,11 +340,10 @@ namespace OnlineStore.Forms
             CurrentChildFormIconPicBox.IconChar = FontAwesome.Sharp.IconChar.House;
             CurrentChildFormIconPicBox.IconColor = Color.MediumPurple;
             CurrentChildFormIconPicBox.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            CurrentChildFormIconPicBox.IconSize = 40;
-            CurrentChildFormIconPicBox.Location = new Point(21, 29);
-            CurrentChildFormIconPicBox.Margin = new Padding(3, 4, 3, 4);
+            CurrentChildFormIconPicBox.IconSize = 35;
+            CurrentChildFormIconPicBox.Location = new Point(18, 22);
             CurrentChildFormIconPicBox.Name = "CurrentChildFormIconPicBox";
-            CurrentChildFormIconPicBox.Size = new Size(40, 47);
+            CurrentChildFormIconPicBox.Size = new Size(35, 35);
             CurrentChildFormIconPicBox.TabIndex = 0;
             CurrentChildFormIconPicBox.TabStop = false;
             // 
@@ -363,10 +352,9 @@ namespace OnlineStore.Forms
             ShadowPanel.BackColor = Color.FromArgb(26, 24, 58);
             ShadowPanel.Dock = DockStyle.Top;
             ShadowPanel.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            ShadowPanel.Location = new Point(251, 100);
-            ShadowPanel.Margin = new Padding(3, 4, 3, 4);
+            ShadowPanel.Location = new Point(220, 75);
             ShadowPanel.Name = "ShadowPanel";
-            ShadowPanel.Size = new Size(1115, 12);
+            ShadowPanel.Size = new Size(821, 9);
             ShadowPanel.TabIndex = 2;
             // 
             // DesktopPanel
@@ -374,36 +362,33 @@ namespace OnlineStore.Forms
             DesktopPanel.BackColor = Color.FromArgb(34, 33, 74);
             DesktopPanel.Controls.Add(pictureBox1);
             DesktopPanel.Dock = DockStyle.Fill;
-            DesktopPanel.Location = new Point(251, 112);
-            DesktopPanel.Margin = new Padding(3, 4, 3, 4);
+            DesktopPanel.Location = new Point(220, 84);
             DesktopPanel.Name = "DesktopPanel";
-            DesktopPanel.Size = new Size(1115, 659);
+            DesktopPanel.Size = new Size(821, 527);
             DesktopPanel.TabIndex = 3;
             // 
             // pictureBox1
             // 
             pictureBox1.Anchor = AnchorStyles.None;
             pictureBox1.Image = Properties.Resources.Coollama;
-            pictureBox1.Location = new Point(240, 66);
             pictureBox1.Margin = new Padding(3, 4, 3, 4);
+            pictureBox1.Location = new Point(132, 66);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(624, 455);
+            pictureBox1.Size = new Size(546, 341);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
             // MainMenuForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1366, 771);
+            ClientSize = new Size(1041, 611);
             Controls.Add(DesktopPanel);
             Controls.Add(ShadowPanel);
             Controls.Add(TitleBarPanel);
             Controls.Add(MenuPanel);
-            FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(3, 4, 3, 4);
-            MinimumSize = new Size(1112, 771);
+            MinimumSize = new Size(973, 578);
             Name = "MainMenuForm";
             Text = "MainMenuForm";
             MenuPanel.ResumeLayout(false);

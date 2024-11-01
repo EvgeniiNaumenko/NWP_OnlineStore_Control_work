@@ -1,5 +1,6 @@
 ﻿using FontAwesome.Sharp;
 using OnlineStore.Models;
+using OnlineStore.Models.Cart;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,6 +10,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -122,6 +124,7 @@ namespace OnlineStore.Forms.MenuSubForms
                 return new List<Product>();
             }
         }
+
 
         private async void NextPage()
         {
@@ -270,6 +273,7 @@ namespace OnlineStore.Forms.MenuSubForms
                     int quantity = 1;
                     int userId = Global.userId;
 
+
                     bool added = await AddProductToCartAsync(userId, productId, quantity);
                     if (added)
                     {
@@ -292,6 +296,9 @@ namespace OnlineStore.Forms.MenuSubForms
             }
 
         }
+
+        // Cart add Prod
+
         private async Task<bool> AddProductToCartAsync(int userId, int productId, int quantity)
         {
             var requestUri = $"{Global.serverUrl}cart/add?userId={userId}&productId={productId}&quantity={quantity}";
@@ -303,5 +310,7 @@ namespace OnlineStore.Forms.MenuSubForms
                 return response.IsSuccessStatusCode;
             }
         }
+
+
     }
 }

@@ -120,8 +120,6 @@ namespace OnlineStore
         private void button2_Click(object sender, EventArgs e)
         {
 
-<<<<<<< HEAD
-=======
             //UserInterfaceForm userInterForm = new UserInterfaceForm(this);
             //userInterForm.Show();
 
@@ -146,8 +144,6 @@ namespace OnlineStore
             //        MessageBox.Show("good");
             //    }
             //}
-
->>>>>>> 8d748dbf6384bab9be5c1205d4da2c4f3ca8c4fb
         }
     }
 }

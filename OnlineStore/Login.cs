@@ -72,10 +72,7 @@ namespace OnlineStore
 
                 if (userId.HasValue)
                 {
-                    MainMenuForm menuForm = new MainMenuForm(userId)
-                    {
-                        //UserId = userId.Value // �������� UserId � �����, ���� ��� ����������
-                    };
+                    MainMenuForm menuForm = new MainMenuForm();
                     Global.userId = userId.Value;
                     menuForm.Show();
                     this.Hide();

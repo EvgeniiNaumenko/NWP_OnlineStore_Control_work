@@ -31,6 +31,7 @@ namespace OnlineStore.Forms
         private void InitializeComponent()
         {
             MenuPanel = new Panel();
+            LogoutBtn = new FontAwesome.Sharp.IconButton();
             SettingsBtn = new FontAwesome.Sharp.IconButton();
             CartBtn = new FontAwesome.Sharp.IconButton();
             Customer = new FontAwesome.Sharp.IconButton();
@@ -60,6 +61,7 @@ namespace OnlineStore.Forms
             // MenuPanel
             // 
             MenuPanel.BackColor = Color.FromArgb(31, 30, 68);
+            MenuPanel.Controls.Add(LogoutBtn);
             MenuPanel.Controls.Add(SettingsBtn);
             MenuPanel.Controls.Add(CartBtn);
             MenuPanel.Controls.Add(Customer);
@@ -72,6 +74,28 @@ namespace OnlineStore.Forms
             MenuPanel.Name = "MenuPanel";
             MenuPanel.Size = new Size(220, 611);
             MenuPanel.TabIndex = 0;
+            // 
+            // LogoutBtn
+            // 
+            LogoutBtn.BackColor = SystemColors.ControlDark;
+            LogoutBtn.Dock = DockStyle.Bottom;
+            LogoutBtn.FlatAppearance.BorderSize = 0;
+            LogoutBtn.FlatStyle = FlatStyle.Flat;
+            LogoutBtn.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            LogoutBtn.ForeColor = SystemColors.ActiveCaptionText;
+            LogoutBtn.IconChar = FontAwesome.Sharp.IconChar.PowerOff;
+            LogoutBtn.IconColor = Color.Black;
+            LogoutBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            LogoutBtn.IconSize = 25;
+            LogoutBtn.ImageAlign = ContentAlignment.MiddleLeft;
+            LogoutBtn.Location = new Point(0, 586);
+            LogoutBtn.Margin = new Padding(0);
+            LogoutBtn.Name = "LogoutBtn";
+            LogoutBtn.Size = new Size(220, 25);
+            LogoutBtn.TabIndex = 8;
+            LogoutBtn.Text = "Logout";
+            LogoutBtn.UseVisualStyleBackColor = false;
+            LogoutBtn.Click += LogoutBtn_Click;
             // 
             // SettingsBtn
             // 
@@ -288,7 +312,7 @@ namespace OnlineStore.Forms
             MaximizeBtn.IconColor = SystemColors.HotTrack;
             MaximizeBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             MaximizeBtn.IconSize = 25;
-            MaximizeBtn.Location = new Point(766, 5);
+            MaximizeBtn.Location = new Point(766, 4);
             MaximizeBtn.Name = "MaximizeBtn";
             MaximizeBtn.Size = new Size(18, 18);
             MaximizeBtn.TabIndex = 4;
@@ -394,5 +418,6 @@ namespace OnlineStore.Forms
         private FontAwesome.Sharp.IconButton CloseBtn;
         private FontAwesome.Sharp.IconButton MaximizeBtn;
         private FontAwesome.Sharp.IconButton MinimizeBtn;
+        private FontAwesome.Sharp.IconButton LogoutBtn;
     }
 }

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using FontAwesome.Sharp;
 using OnlineStore.Forms.MenuSubForms;
 using Color = System.Drawing.Color;
+using OnlineStore.Models;
 
 namespace OnlineStore.Forms
 {
@@ -23,11 +24,10 @@ namespace OnlineStore.Forms
         private Form currentChildForm;
         private int? _userId;
 
-        public MainMenuForm(int? userId)
+        public MainMenuForm()
         {
             InitializeComponent();
-            // userId from LoginMenu
-            _userId = userId;
+
 
 
 
@@ -200,6 +200,14 @@ namespace OnlineStore.Forms
         private void MinimizeBtn_Click_1(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Minimized;
+        }
+
+        private void LogoutBtn_Click(object sender, EventArgs e)
+        {
+            Login login = new Login();
+            Global.userId = 0;
+            login.Show();
+            this.Close();
         }
     }
 }

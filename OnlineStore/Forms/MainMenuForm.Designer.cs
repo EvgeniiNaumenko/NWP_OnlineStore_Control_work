@@ -385,7 +385,6 @@ namespace OnlineStore.Forms
             Controls.Add(ShadowPanel);
             Controls.Add(TitleBarPanel);
             Controls.Add(MenuPanel);
-            FormBorderStyle = FormBorderStyle.FixedSingle;
             MinimumSize = new Size(975, 590);
             Name = "MainMenuForm";
             Text = "MainMenuForm";

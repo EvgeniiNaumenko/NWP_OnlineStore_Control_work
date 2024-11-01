@@ -277,10 +277,10 @@ namespace OnlineStore.Forms
             CloseBtn.FlatAppearance.BorderSize = 0;
             CloseBtn.FlatStyle = FlatStyle.Flat;
             CloseBtn.IconChar = FontAwesome.Sharp.IconChar.Close;
-            CloseBtn.IconColor = SystemColors.HotTrack;
+            CloseBtn.IconColor = Color.Silver;
             CloseBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             CloseBtn.IconSize = 25;
-            CloseBtn.Location = new Point(794, 3);
+            CloseBtn.Location = new Point(797, 2);
             CloseBtn.Name = "CloseBtn";
             CloseBtn.Size = new Size(20, 20);
             CloseBtn.TabIndex = 4;
@@ -293,10 +293,10 @@ namespace OnlineStore.Forms
             MinimizeBtn.FlatAppearance.BorderSize = 0;
             MinimizeBtn.FlatStyle = FlatStyle.Flat;
             MinimizeBtn.IconChar = FontAwesome.Sharp.IconChar.WindowMinimize;
-            MinimizeBtn.IconColor = SystemColors.HotTrack;
+            MinimizeBtn.IconColor = Color.Silver;
             MinimizeBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             MinimizeBtn.IconSize = 25;
-            MinimizeBtn.Location = new Point(733, 3);
+            MinimizeBtn.Location = new Point(736, 2);
             MinimizeBtn.Name = "MinimizeBtn";
             MinimizeBtn.Size = new Size(18, 18);
             MinimizeBtn.TabIndex = 4;
@@ -309,10 +309,10 @@ namespace OnlineStore.Forms
             MaximizeBtn.FlatAppearance.BorderSize = 0;
             MaximizeBtn.FlatStyle = FlatStyle.Flat;
             MaximizeBtn.IconChar = FontAwesome.Sharp.IconChar.WindowMaximize;
-            MaximizeBtn.IconColor = SystemColors.HotTrack;
+            MaximizeBtn.IconColor = Color.Silver;
             MaximizeBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             MaximizeBtn.IconSize = 25;
-            MaximizeBtn.Location = new Point(766, 4);
+            MaximizeBtn.Location = new Point(769, 3);
             MaximizeBtn.Name = "MaximizeBtn";
             MaximizeBtn.Size = new Size(18, 18);
             MaximizeBtn.TabIndex = 4;
@@ -379,11 +379,13 @@ namespace OnlineStore.Forms
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.Black;
             ClientSize = new Size(1041, 611);
             Controls.Add(DesktopPanel);
             Controls.Add(ShadowPanel);
             Controls.Add(TitleBarPanel);
             Controls.Add(MenuPanel);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             MinimumSize = new Size(975, 590);
             Name = "MainMenuForm";
             Text = "MainMenuForm";

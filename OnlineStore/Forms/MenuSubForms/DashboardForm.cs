@@ -215,7 +215,7 @@ namespace OnlineStore.Forms.MenuSubForms
                 {
                     Multiline = true,
                     ScrollBars = ScrollBars.Vertical,
-                    Text = $"{list[i].Name} \n {list[i].Category} \n {list[i].Description}",
+                    Text = $"{list[i].Description}",
                     ReadOnly = true,
                     BackColor = Color.MintCream,
                     BorderStyle = BorderStyle.None,
@@ -244,7 +244,7 @@ namespace OnlineStore.Forms.MenuSubForms
 
                 Label categoryLabel = new Label
                 {
-                    Text = list[i].Name.ToString(),
+                    Text = list[i].Category.ToString(),
                     Dock = DockStyle.Top,
                     TextAlign = ContentAlignment.BottomLeft,
                     Font = new Font("Arial", 14, FontStyle.Italic),

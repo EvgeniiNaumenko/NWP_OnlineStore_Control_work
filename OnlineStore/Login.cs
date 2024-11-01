@@ -120,34 +120,7 @@ namespace OnlineStore
         private void button2_Click(object sender, EventArgs e)
         {
 
-<<<<<<< HEAD
-=======
-            //UserInterfaceForm userInterForm = new UserInterfaceForm(this);
-            //userInterForm.Show();
-
-
-            MainMenuForm menuForm = new MainMenuForm();
-            menuForm.Show();
-            this.Hide();
-
-
-
-            //using (OpenFileDialog openFileDialog = new OpenFileDialog())
-            //{
-            //    // Устанавливаем фильтр для выбора только изображений
-            //    openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp;*.gif";
-            //    openFileDialog.Title = "Выберите изображение";
-
-            //    // Проверяем, выбрал ли пользователь файл
-            //    if (openFileDialog.ShowDialog() == DialogResult.OK)
-            //    {
-            //        // Отображаем выбранное изображение в PictureBox
-            //        //pictureBox1.Image = Image.FromFile(openFileDialog.FileName);
-            //        MessageBox.Show("good");
-            //    }
-            //}
-
->>>>>>> 8d748dbf6384bab9be5c1205d4da2c4f3ca8c4fb
+            
         }
     }
 }

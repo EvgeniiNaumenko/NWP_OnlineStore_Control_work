@@ -28,9 +28,6 @@ namespace OnlineStore.Forms
         {
             InitializeComponent();
 
-
-
-
             // Forms and buttons settings
             leftBorderBtn = new Panel();
             leftBorderBtn.Size = new Size(7, 60);   // высота ширина / 60 стоит как высота у кнопок
@@ -40,6 +37,7 @@ namespace OnlineStore.Forms
             this.ControlBox = false;
             this.DoubleBuffered = true;
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
+
 
         }
 

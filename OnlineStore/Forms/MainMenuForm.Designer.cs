@@ -287,7 +287,7 @@ namespace OnlineStore.Forms
             CloseBtn.FlatAppearance.BorderSize = 0;
             CloseBtn.FlatStyle = FlatStyle.Flat;
             CloseBtn.IconChar = FontAwesome.Sharp.IconChar.Close;
-            CloseBtn.IconColor = SystemColors.HotTrack;
+            CloseBtn.IconColor = Color.Silver;
             CloseBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             CloseBtn.IconSize = 25;
             CloseBtn.Location = new Point(908, 4);
@@ -304,7 +304,7 @@ namespace OnlineStore.Forms
             MinimizeBtn.FlatAppearance.BorderSize = 0;
             MinimizeBtn.FlatStyle = FlatStyle.Flat;
             MinimizeBtn.IconChar = FontAwesome.Sharp.IconChar.WindowMinimize;
-            MinimizeBtn.IconColor = SystemColors.HotTrack;
+            MinimizeBtn.IconColor = Color.Silver;
             MinimizeBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             MinimizeBtn.IconSize = 25;
             MinimizeBtn.Location = new Point(839, 4);
@@ -321,7 +321,7 @@ namespace OnlineStore.Forms
             MaximizeBtn.FlatAppearance.BorderSize = 0;
             MaximizeBtn.FlatStyle = FlatStyle.Flat;
             MaximizeBtn.IconChar = FontAwesome.Sharp.IconChar.WindowMaximize;
-            MaximizeBtn.IconColor = SystemColors.HotTrack;
+            MaximizeBtn.IconColor = Color.Silver;
             MaximizeBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             MaximizeBtn.IconSize = 25;
             MaximizeBtn.Location = new Point(876, 5);

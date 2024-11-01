@@ -31,9 +31,6 @@
     <Compile Update="Forms\Register\RegisterForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\UserInterface\UserInterfaceForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="Login.cs">
       <SubType>Form</SubType>
     </Compile>

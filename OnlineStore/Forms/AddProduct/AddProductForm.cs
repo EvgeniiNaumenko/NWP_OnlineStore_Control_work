@@ -19,6 +19,7 @@ namespace OnlineStore.Forms.AddProduct
         public AddProductForm(int userId)
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
             _userId = userId;
         }
 

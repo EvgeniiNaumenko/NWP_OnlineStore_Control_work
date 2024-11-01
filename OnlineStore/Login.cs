@@ -4,7 +4,6 @@ using OnlineStore.Forms.Register;
 using System.Text.Json;
 using System.Text;
 using OnlineStore.Models;
-using OnlineStore.Forms.UserInterface;
 using OnlineStore.Forms;
 using System.Net.Http.Json;
 using OnlineStore.Forms.MenuSubForms;
@@ -17,6 +16,7 @@ namespace OnlineStore
         public Login()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void CloseBtn_Click(object sender, EventArgs e)
@@ -120,6 +120,8 @@ namespace OnlineStore
         private void button2_Click(object sender, EventArgs e)
         {
 
+<<<<<<< HEAD
+=======
             //UserInterfaceForm userInterForm = new UserInterfaceForm(this);
             //userInterForm.Show();
 
@@ -145,6 +147,7 @@ namespace OnlineStore
             //    }
             //}
 
+>>>>>>> 8d748dbf6384bab9be5c1205d4da2c4f3ca8c4fb
         }
     }
 }

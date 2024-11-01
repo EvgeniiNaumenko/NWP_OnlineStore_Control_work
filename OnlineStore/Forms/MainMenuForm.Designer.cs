@@ -280,6 +280,7 @@ namespace OnlineStore.Forms
             CloseBtn.IconColor = Color.Silver;
             CloseBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             CloseBtn.IconSize = 25;
+            CloseBtn.Margin = new Padding(3, 4, 3, 4);
             CloseBtn.Location = new Point(793, 3);
             CloseBtn.Name = "CloseBtn";
             CloseBtn.Size = new Size(20, 20);
@@ -296,6 +297,7 @@ namespace OnlineStore.Forms
             MinimizeBtn.IconColor = Color.Silver;
             MinimizeBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             MinimizeBtn.IconSize = 25;
+            MinimizeBtn.Margin = new Padding(3, 4, 3, 4);
             MinimizeBtn.Location = new Point(733, 3);
             MinimizeBtn.Name = "MinimizeBtn";
             MinimizeBtn.Size = new Size(18, 18);
@@ -312,6 +314,7 @@ namespace OnlineStore.Forms
             MaximizeBtn.IconColor = Color.Silver;
             MaximizeBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             MaximizeBtn.IconSize = 25;
+            MaximizeBtn.Margin = new Padding(3, 4, 3, 4);
             MaximizeBtn.Location = new Point(765, 4);
             MaximizeBtn.Name = "MaximizeBtn";
             MaximizeBtn.Size = new Size(18, 18);
@@ -368,6 +371,7 @@ namespace OnlineStore.Forms
             // 
             pictureBox1.Anchor = AnchorStyles.None;
             pictureBox1.Image = Properties.Resources.Coollama;
+            pictureBox1.Margin = new Padding(3, 4, 3, 4);
             pictureBox1.Location = new Point(132, 66);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(546, 341);

@@ -20,7 +20,7 @@ namespace OnlineStore.Forms.MenuSubForms
     {
         public static List<Product> filterProducts;
         private static readonly HttpClient client = new HttpClient();
-        private static int currentPage = 1; 
+        private static int currentPage = 1;
         private const int PageSize = 12;
         private TextBox nameTextBox;
         private TextBox categoryTextBox;
@@ -115,7 +115,7 @@ namespace OnlineStore.Forms.MenuSubForms
                 else
                 {
                     MessageBox.Show("Ошибка при получении продуктов: " + response.ReasonPhrase);
-                    return new List<Product>(); 
+                    return new List<Product>();
                 }
             }
             catch (Exception ex)
@@ -137,7 +137,7 @@ namespace OnlineStore.Forms.MenuSubForms
             if (currentPage > 1)
             {
                 currentPage--;
-                await LoadProducts(); 
+                await LoadProducts();
             }
         }
         private async Task LoadProducts()
@@ -207,8 +207,8 @@ namespace OnlineStore.Forms.MenuSubForms
                 string imageUrl = list[i].imageUrl;
                 try
                 {
-                     var imageStream = await client.GetStreamAsync(imageUrl);
-                     pictureBox.Image = Image.FromStream(imageStream);
+                    var imageStream = await client.GetStreamAsync(imageUrl);
+                    pictureBox.Image = Image.FromStream(imageStream);
                 }
                 catch (Exception ex)
                 {
@@ -271,7 +271,8 @@ namespace OnlineStore.Forms.MenuSubForms
                 {
                     int productId = list[(int)((Button)s).Tag].Id;
                     int quantity = 1;
-                    int userId = Global.userId; 
+                    int userId = Global.userId;
+
 
                     bool added = await AddProductToCartAsync(userId, productId, quantity);
                     if (added)
@@ -297,6 +298,7 @@ namespace OnlineStore.Forms.MenuSubForms
         }
 
         // Cart add Prod
+
         private async Task<bool> AddProductToCartAsync(int userId, int productId, int quantity)
         {
             var requestUri = $"{Global.serverUrl}cart/add?userId={userId}&productId={productId}&quantity={quantity}";

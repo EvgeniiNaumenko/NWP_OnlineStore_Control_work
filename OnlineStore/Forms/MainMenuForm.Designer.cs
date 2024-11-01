@@ -73,7 +73,7 @@ namespace OnlineStore.Forms
             MenuPanel.Location = new Point(0, 0);
             MenuPanel.Margin = new Padding(3, 4, 3, 4);
             MenuPanel.Name = "MenuPanel";
-            MenuPanel.Size = new Size(251, 815);
+            MenuPanel.Size = new Size(251, 771);
             MenuPanel.TabIndex = 0;
             // 
             // LogoutBtn
@@ -89,7 +89,7 @@ namespace OnlineStore.Forms
             LogoutBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             LogoutBtn.IconSize = 25;
             LogoutBtn.ImageAlign = ContentAlignment.MiddleLeft;
-            LogoutBtn.Location = new Point(0, 782);
+            LogoutBtn.Location = new Point(0, 738);
             LogoutBtn.Margin = new Padding(0);
             LogoutBtn.Name = "LogoutBtn";
             LogoutBtn.Size = new Size(251, 33);
@@ -277,7 +277,7 @@ namespace OnlineStore.Forms
             TitleBarPanel.Location = new Point(251, 0);
             TitleBarPanel.Margin = new Padding(3, 4, 3, 4);
             TitleBarPanel.Name = "TitleBarPanel";
-            TitleBarPanel.Size = new Size(939, 100);
+            TitleBarPanel.Size = new Size(1115, 100);
             TitleBarPanel.TabIndex = 1;
             TitleBarPanel.MouseDown += TitleBarPanel_MouseDown;
             // 
@@ -290,7 +290,7 @@ namespace OnlineStore.Forms
             CloseBtn.IconColor = Color.Silver;
             CloseBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             CloseBtn.IconSize = 25;
-            CloseBtn.Location = new Point(908, 4);
+            CloseBtn.Location = new Point(1084, 4);
             CloseBtn.Margin = new Padding(3, 4, 3, 4);
             CloseBtn.Name = "CloseBtn";
             CloseBtn.Size = new Size(23, 27);
@@ -307,7 +307,7 @@ namespace OnlineStore.Forms
             MinimizeBtn.IconColor = Color.Silver;
             MinimizeBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             MinimizeBtn.IconSize = 25;
-            MinimizeBtn.Location = new Point(839, 4);
+            MinimizeBtn.Location = new Point(1015, 4);
             MinimizeBtn.Margin = new Padding(3, 4, 3, 4);
             MinimizeBtn.Name = "MinimizeBtn";
             MinimizeBtn.Size = new Size(21, 24);
@@ -324,7 +324,7 @@ namespace OnlineStore.Forms
             MaximizeBtn.IconColor = Color.Silver;
             MaximizeBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             MaximizeBtn.IconSize = 25;
-            MaximizeBtn.Location = new Point(876, 5);
+            MaximizeBtn.Location = new Point(1052, 5);
             MaximizeBtn.Margin = new Padding(3, 4, 3, 4);
             MaximizeBtn.Name = "MaximizeBtn";
             MaximizeBtn.Size = new Size(21, 24);
@@ -366,7 +366,7 @@ namespace OnlineStore.Forms
             ShadowPanel.Location = new Point(251, 100);
             ShadowPanel.Margin = new Padding(3, 4, 3, 4);
             ShadowPanel.Name = "ShadowPanel";
-            ShadowPanel.Size = new Size(939, 12);
+            ShadowPanel.Size = new Size(1115, 12);
             ShadowPanel.TabIndex = 2;
             // 
             // DesktopPanel
@@ -377,14 +377,14 @@ namespace OnlineStore.Forms
             DesktopPanel.Location = new Point(251, 112);
             DesktopPanel.Margin = new Padding(3, 4, 3, 4);
             DesktopPanel.Name = "DesktopPanel";
-            DesktopPanel.Size = new Size(939, 703);
+            DesktopPanel.Size = new Size(1115, 659);
             DesktopPanel.TabIndex = 3;
             // 
             // pictureBox1
             // 
             pictureBox1.Anchor = AnchorStyles.None;
             pictureBox1.Image = Properties.Resources.Coollama;
-            pictureBox1.Location = new Point(152, 88);
+            pictureBox1.Location = new Point(240, 66);
             pictureBox1.Margin = new Padding(3, 4, 3, 4);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(624, 455);
@@ -396,7 +396,7 @@ namespace OnlineStore.Forms
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1190, 815);
+            ClientSize = new Size(1366, 771);
             Controls.Add(DesktopPanel);
             Controls.Add(ShadowPanel);
             Controls.Add(TitleBarPanel);

@@ -18,7 +18,7 @@ namespace OnlineStore.Forms.MenuSubForms
     {
         public static List<Product> filterProducts;
         private static readonly HttpClient client = new HttpClient();
-        private static int currentPage = 1; 
+        private static int currentPage = 1;
         private const int PageSize = 12;
         private TextBox nameTextBox;
         private TextBox categoryTextBox;
@@ -113,7 +113,7 @@ namespace OnlineStore.Forms.MenuSubForms
                 else
                 {
                     MessageBox.Show("Ошибка при получении продуктов: " + response.ReasonPhrase);
-                    return new List<Product>(); 
+                    return new List<Product>();
                 }
             }
             catch (Exception ex)
@@ -134,7 +134,7 @@ namespace OnlineStore.Forms.MenuSubForms
             if (currentPage > 1)
             {
                 currentPage--;
-                await LoadProducts(); 
+                await LoadProducts();
             }
         }
         private async Task LoadProducts()
@@ -204,8 +204,8 @@ namespace OnlineStore.Forms.MenuSubForms
                 string imageUrl = list[i].imageUrl;
                 try
                 {
-                     var imageStream = await client.GetStreamAsync(imageUrl);
-                     pictureBox.Image = Image.FromStream(imageStream);
+                    var imageStream = await client.GetStreamAsync(imageUrl);
+                    pictureBox.Image = Image.FromStream(imageStream);
                 }
                 catch (Exception ex)
                 {
@@ -266,7 +266,19 @@ namespace OnlineStore.Forms.MenuSubForms
                 };
                 addBtn.Click += async (s, e) =>
                 {
-                    
+                    int productId = list[(int)((Button)s).Tag].Id;
+                    int quantity = 1;
+                    int userId = Global.userId;
+
+                    bool added = await AddProductToCartAsync(userId, productId, quantity);
+                    if (added)
+                    {
+                        MessageBox.Show("Product has been added.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to add to cart");
+                    }
                 };
 
                 cardPanel.Controls.Add(descriptionTextBox);
@@ -277,6 +289,18 @@ namespace OnlineStore.Forms.MenuSubForms
                 cardPanel.Controls.Add(addBtn);
 
                 FilterProductsPanel.Controls.Add(cardPanel);
+            }
+
+        }
+        private async Task<bool> AddProductToCartAsync(int userId, int productId, int quantity)
+        {
+            var requestUri = $"{Global.serverUrl}cart/add?userId={userId}&productId={productId}&quantity={quantity}";
+
+            using (var client = new HttpClient())
+            {
+                var response = await client.PostAsync(requestUri, null);
+
+                return response.IsSuccessStatusCode;
             }
         }
     }
